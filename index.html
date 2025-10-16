@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sk">
+<html lang="sk" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,19 +13,34 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ing. Martin Hubáček | Osobný finančný sprievodca">
   <meta property="og:description" content="Finančný sprievodca pre ľudí, nie pre produkty. Hypotéky, poistenie, investície, bicykle a e-biky.">
+  <meta property="og:image" content="https://www.martinhubacek.sk/martin-hubacek.jpg">
   <meta property="og:url" content="https://www.martinhubacek.sk/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Font (nepovinné) -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Font + Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme:{
+        extend:{
+          colors:{ navy:'#222e62', brand:'#5cba47' },
+          boxShadow:{ lux:'0 30px 80px rgba(0,0,0,.45)' },
+          fontFamily:{ sans:['Inter','system-ui','-apple-system','Segoe UI','Roboto','Arial','sans-serif'] }
+        }
+      }
+    }
+  </script>
 
-  <!-- GA4 – tvoje ID -->
+  <!-- GA4 (tvoje ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQJC3DTEVK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-WQJC3DTEVK'); // <- tvoje GA4 ID
+    gtag('config', 'G-WQJC3DTEVK');
   </script>
 
   <!-- Schema.org -->
@@ -41,127 +56,251 @@
   }</script>
 
   <style>
-    :root{--navy:#222e62;--brand:#5cba47;}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--navy);color:#fff;font:16px/1.6 Roboto,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1120px;margin:0 auto;padding:0 1.25rem}
-    .header{backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.12);position:sticky;top:0;z-index:50}
-    .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-    .nav a:hover{color:var(--brand)}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.25rem;border-radius:999px;font-weight:600}
-    .btn-primary{background:var(--brand);color:#000}
-    .btn-outline{border:1px solid rgba(255,255,255,.35)}
-    .grid{display:grid;gap:1.25rem}
-    .col-2{grid-template-columns:1fr}
-    .cards{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-    .card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);border-radius:16px;padding:1rem;transition:transform .2s ease, box-shadow .2s ease}
+    :root{--navy:#222e62;--brand:#5cba47}
+    body{background:var(--navy);color:#fff}
+    .glass{backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.06)}
+    .card{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
-    footer{border-top:1px solid rgba(255,255,255,.12);padding:2rem 0;color:rgba(255,255,255,.8)}
-    .progress{position:fixed;inset:0 auto auto 0;height:3px;width:0;background:linear-gradient(90deg,var(--brand),#d9f6d1);z-index:60}
-    .hero-img{border:1px solid rgba(255,255,255,.12);border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,.35);overflow:hidden}
-    .hero-badge{position:absolute;right:1rem;bottom:1rem;background:var(--brand);color:#000;padding:.5rem .75rem;border-radius:12px;font-weight:600}
-    .muted{color:rgba(255,255,255,.85)}
-    .small{font-size:.9rem}
-    /* jemné “luxusné” pozadie */
+    .progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--brand),#d9f6d1);z-index:60}
     .blob{position:absolute;filter:blur(50px);opacity:.35;mix-blend:screen;animation:float 18s ease-in-out infinite}
     .blob.b1{width:420px;height:420px;background:#5cba47;top:-60px;right:-80px}
     .blob.b2{width:360px;height:360px;background:#88d86e;bottom:-80px;left:-60px;animation-delay:3s}
     @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(20px) translateX(12px)}}
-    /* reveal pri scrollovaní */
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
     .reveal.on{opacity:1;transform:translateY(0)}
-    @media (min-width:768px){.col-2{grid-template-columns:repeat(2,1fr)}}
-    /* minimalistické inline logo (náhrada, kým nepridáš SVG) */
-    .logo{display:inline-block;width:112px;height:28px;background:linear-gradient(90deg,#fff,#dfe7ff);border-radius:6px;position:relative}
-    .logo:after{content:'VIAVERO';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#0b1029;font-weight:700;font-size:12px;letter-spacing:.12em}
+    .logo-mini{display:inline-flex;align-items:center;justify-content:center;width:112px;height:28px;background:linear-gradient(90deg,#fff,#e9f3ff);border-radius:6px;color:#0b1029;font-weight:800;font-size:12px;letter-spacing:.12em}
   </style>
 </head>
-<body>
+<body class="font-sans">
   <div id="progress" class="progress"></div>
 
   <!-- Sticky CTA -->
-  <a href="#kontakt" class="btn btn-primary" style="position:fixed;right:1.25rem;bottom:1.25rem;z-index:55;box-shadow:0 30px 80px rgba(0,0,0,.45)">Nezáväzná konzultácia</a>
+  <a href="#kontakt" class="fixed bottom-6 right-6 z-40 px-5 py-3 rounded-full bg-brand text-black font-semibold shadow-lux hover:opacity-90">
+    Nezáväzná konzultácia
+  </a>
 
   <!-- Header -->
-  <header class="header">
-    <div class="container nav">
-      <a href="#home" class="muted small" style="display:flex;align-items:center;gap:.5rem">
-        <span class="logo" aria-hidden="true"></span> ViaVero – projektové partnerstvo
+  <header class="glass sticky top-0 z-50 border-b border-white/10">
+    <div class="max-w-6xl mx-auto h-16 px-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <span class="logo-mini" aria-hidden="true">VIAVERO</span>
+        <span class="text-sm tracking-wide text-white/60">ViaVero – projektové partnerstvo</span>
       </a>
-      <nav class="muted small" aria-label="Hlavná navigácia">
-        <a href="#sluzby">Služby</a> · <a href="#kalkulacky">Kalkulačky</a> · <a href="#o-mne">O mne</a> · <a href="#kontakt">Kontakt</a>
+      <nav class="hidden md:flex gap-6 text-sm text-white/80">
+        <a href="#sluzby" class="hover:text-brand">Služby</a>
+        <a href="#kalkulacky" class="hover:text-brand">Kalkulačky</a>
+        <a href="#o-mne" class="hover:text-brand">O mne</a>
+        <a href="#dovody" class="hover:text-brand">Prečo so mnou</a>
+        <a href="#kontakt" class="hover:text-brand">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main id="home" class="container" style="padding:64px 0 40px;position:relative;overflow:hidden">
-    <div class="blob b1"></div><div class="blob b2"></div>
-    <div class="grid col-2" style="align-items:center;gap:2rem">
-      <div class="reveal">
-        <h1 style="font:700 48px/1.1 Roboto,system-ui">Finančný sprievodca pre ľudí, nie pre produkty.</h1>
-        <p class="muted" style="font-size:20px;margin-top:.5rem">Zmapujem vašu situáciu, ukážem možnosti a spolu vyberieme riešenie, ktoré dáva zmysel dnes aj o 5 rokov.</p>
-        <div style="margin-top:1.25rem;display:flex;gap:.75rem;flex-wrap:wrap">
-          <a href="#kontakt" class="btn btn-primary" onclick="gaEvent('cta_click',{label:'hero_start'})">Začať spoluprácu</a>
-          <a href="#kalkulacky" class="btn btn-outline">Rýchle kalkulačky</a>
+  <!-- HERO -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+
+    <div class="max-w-6xl mx-auto px-4 pt-20 md:pt-28 pb-10 grid md:grid-cols-12 gap-10 items-center">
+      <div class="md:col-span-7 reveal">
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-[1.08]">
+          Finančný sprievodca pre ľudí, nie pre produkty.
+        </h1>
+        <p class="text-white/85 text-lg mt-4 max-w-prose">
+          Zmapujem vašu situáciu, ukážem možnosti a spolu vyberieme riešenie, ktoré dáva zmysel
+          <span class="text-white">dnes</span> aj o <span class="text-white">5 rokov</span>. Jednoducho, transparentne – s výsledkom.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#kontakt" class="inline-flex items-center rounded-full px-6 py-3 font-semibold bg-brand text-black hover:opacity-90" onclick="gtag('event','cta_click',{label:'hero_start'})">Začať spoluprácu</a>
+          <a href="#kalkulacky" class="inline-flex items-center rounded-full px-6 py-3 border border-white/30 hover:border-white/60">Rýchle kalkulačky</a>
         </div>
-        <p class="small muted" style="margin-top:.75rem">IČO: 56 579 128 · NBS: 287587 · Riaditeľ ViaVero</p>
+        <div class="mt-6 text-sm text-white/60">
+          IČO: 56 579 128 · NBS: 287587 · Riaditeľ ViaVero
+        </div>
       </div>
-      <div class="reveal" style="position:relative;transition-delay:.1s">
-        <figure class="hero-img">
-          <!-- Nahraď src vlastnou fotkou, ak budeš chcieť -->
-          <img src="https://images.unsplash.com/photo-1605901309584-818e25960a8b?q=80&w=1200&auto=format&fit=crop" alt="Profilová fotografia – Martin Hubáček" style="display:block;width:100%;height:420px;object-fit:cover">
-        </figure>
-        <div class="hero-badge">15+ rokov skúseností</div>
+
+      <div class="md:col-span-5 reveal" style="transition-delay:.12s">
+        <div class="relative rounded-3xl border border-white/10 shadow-lux overflow-hidden">
+          <!-- Ulož priloženú fotku do rovnakého priečinka ako index.html pod názvom: martin-hubacek.jpg -->
+          <img src="./martin-hubacek.jpg" alt="Ing. Martin Hubáček – profilová fotografia" class="w-full h-[520px] object-cover">
+          <div class="absolute bottom-4 right-4 bg-brand text-black font-semibold px-3 py-2 rounded-xl">15+ rokov skúseností</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Služby -->
-    <section id="sluzby" style="padding:56px 0 8px">
-      <h2 style="font:700 36px/1.2 Roboto" class="reveal">Čomu sa venujem</h2>
-      <p class="muted reveal" style="max-width:70ch;margin:.5rem 0 1rem">Kombinujem prax z realít, hypoték a poistenia. Riešenia skladám okolo vášho života – nie okolo produktov.</p>
-      <div class="grid cards">
-        <article class="card reveal"><h3 style="font-weight:700">Hypotéky & refinancovanie</h3><p class="muted">Sadzby, modelovanie splátok, prechod medzi bankami, fixácia a LTV.</p></article>
-        <article class="card reveal" style="transition-delay:.06s"><h3 style="font-weight:700">Poistenie majetku & zdravia</h3><p class="muted">Dom, byt, podnikanie, život a PN. Krytia a výluky nastavené rozumne.</p></article>
-        <article class="card reveal" style="transition-delay:.12s"><h3 style="font-weight:700">Poistenie bicyklov a e-bikov</h3><p class="muted">Škody, krádež, zodpovednosť — v celej EÚ. Prepojené s bikepoistenie.sk.</p></article>
+  <!-- SLUŽBY -->
+  <section id="sluzby" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold reveal">Čomu sa venujem</h2>
+      <p class="text-white/75 mt-2 max-w-2xl reveal">Kombinujem prax z realít, hypoték a poistenia. Riešenia skladám okolo vášho života – nie okolo produktov.</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <article class="card rounded-2xl p-6 reveal">
+          <h3 class="text-xl font-semibold">Hypotéky & refinancovanie</h3>
+          <p class="text-white/70 mt-2">Sadzby, modelovanie splátok, prechod medzi bankami, fixácia a LTV.</p>
+        </article>
+        <article class="card rounded-2xl p-6 reveal" style="transition-delay:.06s">
+          <h3 class="text-xl font-semibold">Poistenie majetku & zdravia</h3>
+          <p class="text-white/70 mt-2">Dom, byt, podnikanie, život a PN. Krytia a výluky nastavené rozumne.</p>
+        </article>
+        <article class="card rounded-2xl p-6 reveal" style="transition-delay:.12s">
+          <h3 class="text-xl font-semibold">Poistenie bicyklov a e-bikov</h3>
+          <p class="text-white/70 mt-2">Škody, krádež, zodpovednosť – platí v celej EÚ. Prepojené s bikepoistenie.sk.</p>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Kalkulačky -->
-    <section id="kalkulacky" style="padding:40px 0">
-      <h2 style="font:700 36px/1.2 Roboto" class="reveal">Kalkulačky</h2>
-      <p class="muted reveal">Externé nástroje — otvoria sa v novom okne. Výsledok je orientačný; finálne podmienky potvrdí poisťovňa/banka.</p>
-      <div class="grid cards" style="margin-top:1rem">
-        <a class="card reveal" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/havarijne-poistenie/?kod=168640003" onclick="gaEvent('calculator',{label:'KASKO'})"><h3 style="font-weight:700">KASKO (havarijné)</h3><p class="muted">Komplexné krytie pre auto.</p></a>
-        <a class="card reveal" style="transition-delay:.03s" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/pzp-povinne-zmluvne-poistenie/?kod=168640003" onclick="gaEvent('calculator',{label:'PZP'})"><h3 style="font-weight:700">PZP</h3><p class="muted">Povinné zmluvné poistenie.</p></a>
-        <a class="card reveal" style="transition-delay:.06s" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-domu-bytu-domacnosti/?kod=168640003" onclick="gaEvent('calculator',{label:'Majetok'})"><h3 style="font-weight:700">Majetok</h3><p class="muted">Dom, byt a domácnosť.</p></a>
-        <a class="card reveal" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-zodpovednosti-zamestnanca-za-skodu/?kod=168640003" onclick="gaEvent('calculator',{label:'Zodpovednosť zamestnanca'})"><h3 style="font-weight:700">Zodpovednosť zamestnanca</h3><p class="muted">Škoda spôsobená zamestnávateľovi.</p></a>
-        <a class="card reveal" style="transition-delay:.03s" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/cestovne-poistenie/?kod=168640003" onclick="gaEvent('calculator',{label:'Cestovné poistenie'})"><h3 style="font-weight:700">Cestovné poistenie</h3><p class="muted">Dovolenka aj dlhodobé výjazdy.</p></a>
-        <a class="card reveal" style="transition-delay:.06s" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/sedadla/?kod=168640003" onclick="gaEvent('calculator',{label:'Úraz sedadiel'})"><h3 style="font-weight:700">Úraz sedadiel</h3><p class="muted">Úrazové krytie posádky.</p></a>
-        <a class="card reveal" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/gap-poistenie-financnej-straty/?kod=168640003" onclick="gaEvent('calculator',{label:'GAP'})"><h3 style="font-weight:700">GAP</h3><p class="muted">Finančná strata pri totálke/krádeži.</p></a>
-        <a class="card reveal" style="transition-delay:.03s" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-podnikatelov/?kod=168640003" onclick="gaEvent('calculator',{label:'Podnikatelia'})"><h3 style="font-weight:700">Podnikatelia</h3><p class="muted">Balíky pre firmy a SZČO.</p></a>
-        <a class="card reveal" style="transition-delay:.06s" target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/cudzinci/?kod=168640003" onclick="gaEvent('calculator',{label:'Cudzinci'})"><h3 style="font-weight:700">Cudzinci</h3><p class="muted">Zdravotné poistenie pre cudzincov.</p></a>
-      </div>
-    </section>
-
-    <!-- O mne -->
-    <section id="o-mne" style="padding:8px 0 40px">
-      <h2 style="font:700 36px/1.2 Roboto" class="reveal">O mne</h2>
-      <p class="muted reveal" style="max-width:70ch">M&F Consulting s.r.o. | IČO: 56 579 128 | Reg. NBS: 287587. Aktuálna pozícia: Riaditeľ v spoločnosti ViaVero.</p>
-    </section>
-
-    <!-- Kontakt -->
-    <section id="kontakt" style="padding:8px 0 40px">
-      <h2 style="font:700 36px/1.2 Roboto" class="reveal">Kontakt</h2>
-      <div class="grid col-2" style="align-items:start">
-        <div class="reveal">
-          <p class="muted">Telefon: <a href="tel:+421905874100">+421 905 874 100</a><br>E-mail: <a href="mailto:hubacekm26@gmail.com">hubacekm26@gmail.com</a></p>
+  <!-- PREČO SO MNOU -->
+  <section id="dovody" class="py-16 bg-white/5 border-y border-white/10">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold reveal">Prečo so mnou</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card rounded-2xl p-6 reveal">
+          <h3 class="font-semibold text-lg">Zrozumiteľnosť</h3>
+          <p class="text-white/70 mt-2">Bez žargónu: všetko preložené do bežnej reči, aby ste sa rozhodovali s pokojom.</p>
         </div>
-        <form class="card reveal" onsubmit="gaEvent('form_submit',{label:'contact'}); alert('Ďakujem! Ozvem sa čoskoro.'); return false;">
-          <label>Meno a priezvisko<br><input type="text" required style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff"></label>
-          <label>Telefón<br><input type="tel" required style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff"></label>
-          <label>E-mail<br><input type="email" required style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff"></label>
-          <label>Správa<br><textarea rows="4" style="width:100%;padding:.6rem;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff"></textarea></label>
-          <label class="small muted" style="display:flex;gap:.5rem;align-items:center"><
+        <div class="card rounded-2xl p-6 reveal" style="transition-delay:.06s">
+          <h3 class="font-semibold text-lg">Kontext & budúcnosť</h3>
+          <p class="text-white/70 mt-2">Voľby, ktoré fungujú dnes a obstoja aj o 5 rokov – modely, scenáre, „čo ak“ testy.</p>
+        </div>
+        <div class="card rounded-2xl p-6 reveal" style="transition-delay:.12s">
+          <h3 class="font-semibold text-lg">Transparentnosť</h3>
+          <p class="text-white/70 mt-2">Čisté podmienky, jasné poplatky a výluky. Rozhodujete sa vy – bez tlaku.</p>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3 reveal">
+        <a href="#kontakt" class="inline-flex items-center rounded-full px-6 py-3 font-semibold bg-brand text-black hover:opacity-90" onclick="gtag('event','cta_click',{label:'why_me_start'})">Dohodnúť konzultáciu</a>
+        <a href="#kalkulacky" class="inline-flex items-center rounded-full px-6 py-3 border border-white/30 hover:border-white/60">Pozrieť kalkulačky</a>
+      </div>
+    </div>
+  </section>
 
+  <!-- KALKULAČKY -->
+  <section id="kalkulacky" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl font-bold reveal">Kalkulačky</h2>
+      <p class="text-white/70 mt-2 reveal">Externé nástroje – otvoria sa v novom okne. Výsledok je orientačný; finálne podmienky potvrdí poisťovňa/banka.</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <a class="card rounded-2xl p-6 block reveal" href="https://www.najpoistenie.sk/havarijne-poistenie/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'KASKO'})">
+          <h3 class="text-lg font-semibold">KASKO (havarijné)</h3><p class="text-white/70 mt-1">Komplexné krytie pre auto.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" style="transition-delay:.03s" href="https://www.najpoistenie.sk/pzp-povinne-zmluvne-poistenie/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'PZP'})">
+          <h3 class="text-lg font-semibold">PZP</h3><p class="text-white/70 mt-1">Povinné zmluvné poistenie.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" style="transition-delay:.06s" href="https://www.najpoistenie.sk/poistenie-domu-bytu-domacnosti/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'Majetok'})">
+          <h3 class="text-lg font-semibold">Majetok</h3><p class="text-white/70 mt-1">Dom, byt a domácnosť.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" href="https://www.najpoistenie.sk/poistenie-zodpovednosti-zamestnanca-za-skodu/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'Zodpovednosť zamestnanca'})">
+          <h3 class="text-lg font-semibold">Zodpovednosť zamestnanca</h3><p class="text-white/70 mt-1">Škoda spôsobená zamestnávateľovi.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" style="transition-delay:.03s" href="https://www.najpoistenie.sk/cestovne-poistenie/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'Cestovné poistenie'})">
+          <h3 class="text-lg font-semibold">Cestovné poistenie</h3><p class="text-white/70 mt-1">Dovolenka aj dlhodobé výjazdy.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" style="transition-delay:.06s" href="https://www.najpoistenie.sk/sedadla/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'Úraz sedadiel'})">
+          <h3 class="text-lg font-semibold">Úraz sedadiel</h3><p class="text-white/70 mt-1">Úrazové krytie posádky.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" href="https://www.najpoistenie.sk/gap-poistenie-financnej-straty/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'GAP'})">
+          <h3 class="text-lg font-semibold">GAP</h3><p class="text-white/70 mt-1">Finančná strata pri totálke/krádeži.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" style="transition-delay:.03s" href="https://www.najpoistenie.sk/poistenie-podnikatelov/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'Podnikatelia'})">
+          <h3 class="text-lg font-semibold">Podnikatelia</h3><p class="text-white/70 mt-1">Balíky pre firmy a SZČO.</p>
+        </a>
+        <a class="card rounded-2xl p-6 block reveal" style="transition-delay:.06s" href="https://www.najpoistenie.sk/cudzinci/?kod=168640003" target="_blank" rel="nofollow noopener" onclick="gtag('event','calculator',{label:'Cudzinci'})">
+          <h3 class="text-lg font-semibold">Cudzinci</h3><p class="text-white/70 mt-1">Zdravotné poistenie pre cudzincov.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- O MNE -->
+  <section id="o-mne" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-7 reveal">
+        <h2 class="text-4xl font-bold">O mne</h2>
+        <p class="text-white/85 mt-4">
+          Verím, že dobré rozhodnutie je také, ktorému rozumiete. Na stretnutiach prekladám „bankárčinu“
+          do bežnej reči a porovnávam riešenia tak, aby ste mali pokojný spánok aj rezervu do budúcna.
+        </p>
+        <ul class="text-white/75 mt-4 space-y-1 text-sm">
+          <li><strong>M&F Consulting s.r.o.</strong> — IČO: 56 579 128</li>
+          <li>Registračné číslo NBS: 287587</li>
+          <li>Aktuálna pozícia: Riaditeľ v spoločnosti ViaVero</li>
+        </ul>
+        <div class="mt-6 flex gap-3">
+          <a href="https://www.bikepoistenie.sk" target="_blank" rel="noopener" class="border border-white/20 px-4 py-2 rounded-xl hover:bg-white/10">bikepoistenie.sk</a>
+          <a href="https://www.chcemhypoteku.sk" target="_blank" rel="noopener" class="border border-white/20 px-4 py-2 rounded-xl hover:bg-white/10">chcemhypoteku.sk</a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 reveal" style="transition-delay:.08s">
+        <div class="card rounded-2xl p-6">
+          <h3 class="text-xl font-semibold">Rýchly kontakt</h3>
+          <p class="text-white/85 mt-3">📞 <a class="hover:text-white" href="tel:+421905874100">+421 905 874 100</a><br>✉️ <a class="hover:text-white" href="mailto:hubacekm26@gmail.com">hubacekm26@gmail.com</a></p>
+          <p class="text-white/60 text-sm mt-4">Preferujete správu? Nechajte mi odkaz nižšie.</p>
+          <a href="#kontakt" class="mt-4 inline-flex items-center rounded-xl px-4 py-2 bg-brand text-black font-semibold hover:opacity-90" onclick="gtag('event','cta_click',{label:'about_start'})">Napísať správu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="py-16 bg-white/5 border-y border-white/10">
+    <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-10 items-start">
+      <div class="reveal">
+        <h2 class="text-4xl font-bold">Napíšte mi</h2>
+        <p class="text-white/75 mt-2">Dohodnime si krátky hovor a návrh ďalšieho postupu.</p>
+      </div>
+      <form class="card rounded-2xl p-6 reveal" onsubmit="gtag('event','form_submit',{label:'contact'}); alert('Ďakujem! Ozvem sa čoskoro.'); return false;">
+        <label class="block text-sm">Meno a priezvisko
+          <input type="text" required class="mt-1 w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2">
+        </label>
+        <label class="block text-sm mt-3">Telefón
+          <input type="tel" required class="mt-1 w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2">
+        </label>
+        <label class="block text-sm mt-3">E-mail
+          <input type="email" required class="mt-1 w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2">
+        </label>
+        <label class="block text-sm mt-3">Správa
+          <textarea rows="4" class="mt-1 w-full rounded-lg bg-black/30 border border-white/10 px-3 py-2"></textarea>
+        </label>
+        <label class="flex items-start gap-2 text-xs text-white/70 mt-4">
+          <input type="checkbox" required class="mt-1 accent-brand">
+          Súhlasím so spracovaním osobných údajov na účely kontaktovania.
+        </label>
+        <button class="mt-4 inline-flex items-center rounded-xl px-5 py-2 bg-brand text-black font-semibold hover:opacity-90">Odoslať</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 text-white/75">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col gap-3">
+      <p>© <span id="rok"></span> Ing. Martin Hubáček. Všetky práva vyhradené.</p>
+      <p class="text-xs">Spoločnosť M&amp;F Consulting s.r.o. vykonáva finančné sprostredkovanie v pozícii podriadeného finančného agenta na základe zmluvy o finančnom sprostredkovaní v zmysle § 9 zákona so samostatným finančným agentom spoločnosťou Finportal, a.s.</p>
+      <p class="text-xs">GDPR: <a class="underline hover:text-white" target="_blank" rel="noopener" href="https://finportal.sk/files/ochrana-osobnych-udajov-finportal-2024.pdf">https://finportal.sk/files/ochrana-osobnych-udajov-finportal-2024.pdf</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Reading progress
+    const bar = document.getElementById('progress');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const st = h.scrollTop || document.body.scrollTop;
+      const sh = h.scrollHeight - h.clientHeight;
+      bar.style.width = (st / sh * 100) + '%';
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver(entries=>{
+      for (const e of entries){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Year in footer
+    document.getElementById('rok').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
