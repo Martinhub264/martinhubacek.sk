@@ -24,45 +24,56 @@
   .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
   .nav a{color:#ffffffcc;margin-left:18px}
   .nav a:hover{color:var(--brand)}
+
   .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.25rem;border-radius:999px;font-weight:700;letter-spacing:.2px;position:relative;overflow:hidden;transform:translateZ(0)}
   .btn-primary{background:var(--brand);color:#00170a;box-shadow:0 12px 30px rgba(92,186,71,.25)}
   .btn-outline{border:1px solid #ffffff40}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(92,186,71,.35)}
   .btn-primary::after{content:"";position:absolute;inset:-20px;border-radius:50%;background:#fff6;transform:scale(0);opacity:.0;transition:.35s}
   .btn-primary:active::after{transform:scale(1);opacity:.0}
-  /* pulz */
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(92,186,71,.45)}50%{box-shadow:0 0 0 14px rgba(92,186,71,0)}}
   .btn-primary.pulse{animation:pulse 2.6s ease-in-out infinite}
+
   .card{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:16px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
   .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25)}
   .muted{color:#ffffffb3}
   .small{font-size:.9rem}
-  /* Progress bar (left = prečítané, right = zostáva) */
+
+  /* Progress (vrchná čiara + „zostáva %“) */
   .progress-wrap{position:fixed;inset:0 0 auto 0;height:6px;background:#00000033;z-index:60}
   .progress{height:100%;width:0;background:linear-gradient(90deg,var(--brand),#b9f1a8)}
   .remain{position:fixed;top:9px;right:12px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);padding:.15rem .55rem;border-radius:8px;font-size:.78rem}
+
   /* Hero */
   .hero{padding:68px 0 40px}
   .hero-figure{border:1px solid var(--line);border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,.35);overflow:hidden;position:relative}
   .badge{position:absolute;right:12px;bottom:12px;background:var(--brand);color:#00170a;padding:.45rem .6rem;border-radius:10px;font-weight:700}
   .placeholder{display:grid;place-items:center;background:linear-gradient(145deg,#fff2,#0002);color:#ffffff99}
+
   /* Reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
   .reveal.on{opacity:1;transform:translateY(0)}
-  /* Glow na kartách (sekcia služby) */
+
+  /* Glow loop pre služby */
   .glow{box-shadow:0 0 0 3px #5cba47cc, 0 16px 42px rgba(92,186,71,.35)!important}
-  /* Kalkulačky overlay */
+
+  /* Overlay kalkulačky */
   .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);display:none;z-index:70}
   .overlay.on{display:block}
   .overlay .panel{position:absolute;inset:6% 8%;background:#1e2654;border:1px solid var(--line);border-radius:18px;overflow:auto;padding:20px}
   .overlay .close{position:absolute;top:14px;right:16px;border:1px solid #ffffff44;border-radius:999px;padding:.45rem .75rem;font-weight:700;background:#fff1;color:#fff}
   .calc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
-  /* Mapa SR */
-  .skmap{width:100%;max-width:640px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:10px}
-  .dot{fill:#5cba47}
-  .pulse{transform-origin:center;animation:mapPulse 2.2s ease-out infinite}
-  @keyframes mapPulse{0%{r:4;opacity:1}70%{r:18;opacity:0}100%{r:18;opacity:0}}
-  /* Grid helpers */
+
+  /* Mapa SR – raster outline prefarbený na žiarivú zelenú + pulz bodiek */
+  .map-wrap{position:relative;width:100%;max-width:720px;border:1px solid var(--line);border-radius:16px;background:#0f1746;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .map-img{width:100%;height:auto;display:block;mix-blend-mode:screen; /* aby na tmavej modrej žiarila */
+           filter: invert(53%) sepia(33%) saturate(642%) hue-rotate(66deg) brightness(90%) contrast(105%) drop-shadow(0 0 6px #5cba47) drop-shadow(0 0 12px #5cba47); }
+  .pin{position:absolute;display:flex;align-items:center;gap:.5rem;color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47}
+  .pin .dot{width:10px;height:10px;background:#5cba47;border-radius:50%;box-shadow:0 0 12px #5cba47}
+  .pin .ring{position:absolute;inset:auto;left:0;top:0;transform:translate(-2px,-2px);width:14px;height:14px;border:2px solid #5cba47;border-radius:50%;opacity:.9;animation:pinPulse 2s ease-out infinite}
+  @keyframes pinPulse{0%{transform:translate(-2px,-2px) scale(1);opacity:.9}100%{transform:translate(-2px,-2px) scale(2.4);opacity:0}}
+
+  /* Grid help */
   .grid{display:grid;gap:20px}
   .col-2{grid-template-columns:1fr}
   @media(min-width:900px){.col-2{grid-template-columns:1.1fr .9fr}}
@@ -107,8 +118,7 @@
     </div>
     <div class="reveal" style="transition-delay:.08s">
       <figure class="hero-figure">
-        <!-- Nahraj súbor do rovnakého priečinka ako index.html s názvom: martin-hubacek.jpg -->
-        <img id="portrait" src="martin-hubacek.jpg" alt="Ing. Martin Hubáček – profilová fotografia" onerror="this.replaceWith(document.getElementById('ph'))" style="width:100%;height:520px;object-fit:cover">
+        <img id="portrait" src="martin-hubacek.jpg" alt="Ing. Martin Hubáček – profilová fotografia" onerror="this.style.display='none';document.getElementById('ph').style.display='grid'" style="width:100%;height:520px;object-fit:cover">
         <div id="ph" class="placeholder" style="display:none;width:100%;height:520px">Sem nahrám fotku: <strong>martin-hubacek.jpg</strong></div>
         <div class="badge">15+ rokov skúseností</div>
       </figure>
@@ -126,34 +136,25 @@
     </div>
   </section>
 
-  <!-- Mapa SR -->
+  <!-- Mapa SR – podľa tvojej predlohy -->
   <section id="mapa" style="padding:40px 0">
     <h2 class="reveal" style="font:800 32px/1.2 Inter">Kde ma nájdete</h2>
     <p class="muted reveal">Kancelárie: Bratislava, Trenčín, Martin.</p>
-    <div class="reveal" style="margin-top:10px">
-      <svg class="skmap" viewBox="0 0 800 400" role="img" aria-label="Mapa Slovenska s označenými mestami">
-        <!-- veľmi zjednodušený obrys SR -->
-        <path d="M60,220 L110,200 L160,210 L210,185 L260,200 L300,185 L350,200 L400,185 L450,200 L500,190 L560,200 L610,185 L660,195 L710,180 L740,200 L700,230 L650,235 L600,250 L540,245 L480,260 L420,255 L360,270 L300,260 L240,275 L190,260 L140,270 L90,250 Z"
-              fill="none" stroke="#ffffff66" stroke-width="2"/>
-        <!-- Bratislava (cca 48.15, 17.11) -> ľavý spodok -->
-        <g transform="translate(85,248)">
-          <circle class="dot" r="5"></circle>
-          <circle class="dot pulse" r="5" fill="none" stroke="#5cba47" stroke-width="2"></circle>
-          <text x="10" y="5" fill="#fff" font-size="12" font-weight="700">Bratislava</text>
-        </g>
-        <!-- Trenčín (cca stred-západ) -->
-        <g transform="translate(230,210)">
-          <circle class="dot" r="5"></circle>
-          <circle class="dot pulse" r="5" fill="none" stroke="#5cba47" stroke-width="2"></circle>
-          <text x="10" y="5" fill="#fff" font-size="12" font-weight="700">Trenčín</text>
-        </g>
-        <!-- Martin (sever-stred) -->
-        <g transform="translate(320,190)">
-          <circle class="dot" r="5"></circle>
-          <circle class="dot pulse" r="5" fill="none" stroke="#5cba47" stroke-width="2"></circle>
-          <text x="10" y="5" fill="#fff" font-size="12" font-weight="700">Martin</text>
-        </g>
-      </svg>
+
+    <div class="map-wrap reveal">
+      <!-- nahraj súbor priamo vedľa index.html pod názvom mapa-sr.png -->
+      <img src="mapa-sr.png" alt="Mapa Slovenska – obrys" class="map-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'display:grid;place-items:center;height:380px;color:#9aa7ff;',innerText:'Sem vložím obrázok: mapa-sr.png'}))">
+
+      <!-- značky miest (percentá sú relatívne k obrázku) -->
+      <div class="pin" style="left:10%; top:72%;">
+        <span class="ring"></span><span class="dot"></span><span>Bratislava</span>
+      </div>
+      <div class="pin" style="left:33%; top:50%;">
+        <span class="ring"></span><span class="dot"></span><span>Trenčín</span>
+      </div>
+      <div class="pin" style="left:45%; top:40%;">
+        <span class="ring"></span><span class="dot"></span><span>Martin</span>
+      </div>
     </div>
   </section>
 
@@ -187,7 +188,7 @@
   </div>
 </footer>
 
-<!-- Overlay: Kalkulačky (samostatné okno) -->
+<!-- Overlay: Kalkulačky -->
 <div id="overlay" class="overlay" aria-hidden="true">
   <div class="panel container">
     <button class="close" id="close-calcs">Zavrieť ✕</button>
@@ -211,10 +212,7 @@
   // Rok
   document.getElementById('rok').textContent=new Date().getFullYear();
 
-  // Fallback placeholder pre fotku (ak súbor nie je nahratý)
-  (function(){ const img=document.getElementById('portrait'); img.addEventListener('error',()=>{}); })();
-
-  // Reading progress + percent "zostáva"
+  // Progress + “zostáva”
   (function(){
     const bar=document.getElementById('progress'); const rem=document.getElementById('remain');
     const onScroll=()=>{
@@ -231,7 +229,7 @@
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   })();
 
-  // „Zažiar“ efekt na službách – cyklicky zelený highlight
+  // Služby – cyklický zelený „glow“
   (function(){
     const cards=[...document.querySelectorAll('#svc .card')]; let i=0;
     setInterval(()=>{ cards.forEach(c=>c.classList.remove('glow')); cards[i%cards.length].classList.add('glow'); i++; }, 2400);
@@ -247,11 +245,10 @@
   window.addEventListener('popstate',()=>{ if(location.hash==='#kalkulacky') overlay.classList.add('on'); else overlay.classList.remove('on'); });
   if(location.hash==='#kalkulacky') overlay.classList.add('on');
 
-  // Ripple efekt na klik pre zelené tlačidlá
+  // Klikací ripple pre zelené tlačidlá
   document.querySelectorAll('.btn-primary').forEach(btn=>{
     btn.addEventListener('click',e=>{
-      const r=document.createElement('span');
-      const d=Math.max(btn.clientWidth,btn.clientHeight);
+      const r=document.createElement('span'); const d=Math.max(btn.clientWidth,btn.clientHeight);
       r.style.cssText=`position:absolute;width:${d}px;height:${d}px;background:#ffffff66;border-radius:50%;left:${e.offsetX-d/2}px;top:${e.offsetY-d/2}px;transform:scale(0);animation:rip .6s ease-out;pointer-events:none`;
       btn.appendChild(r); setTimeout(()=>r.remove(),600);
     });
