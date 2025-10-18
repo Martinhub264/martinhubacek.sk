@@ -64,14 +64,35 @@
   .overlay .close{position:absolute;top:14px;right:16px;border:1px solid #ffffff44;border-radius:999px;padding:.45rem .75rem;font-weight:700;background:#fff1;color:#fff}
   .calc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 
-  /* Mapa SR – raster outline prefarbený na žiarivú zelenú + pulz bodiek */
-  .map-wrap{position:relative;width:100%;max-width:720px;border:1px solid var(--line);border-radius:16px;background:#0f1746;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
-  .map-img{width:100%;height:auto;display:block;mix-blend-mode:screen; /* aby na tmavej modrej žiarila */
-           filter: invert(53%) sepia(33%) saturate(642%) hue-rotate(66deg) brightness(90%) contrast(105%) drop-shadow(0 0 6px #5cba47) drop-shadow(0 0 12px #5cba47); }
-  .pin{position:absolute;display:flex;align-items:center;gap:.5rem;color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47}
-  .pin .dot{width:10px;height:10px;background:#5cba47;border-radius:50%;box-shadow:0 0 12px #5cba47}
-  .pin .ring{position:absolute;inset:auto;left:0;top:0;transform:translate(-2px,-2px);width:14px;height:14px;border:2px solid #5cba47;border-radius:50%;opacity:.9;animation:pinPulse 2s ease-out infinite}
-  @keyframes pinPulse{0%{transform:translate(-2px,-2px) scale(1);opacity:.9}100%{transform:translate(-2px,-2px) scale(2.4);opacity:0}}
+  /* Mapa SR – raster outline + modré pozadie + zelený „glow“ iba na obrys */
+.map-wrap{
+  position:relative;width:100%;max-width:720px;
+  border:1px solid var(--line);border-radius:16px;
+  background:#0f1746; /* tmavá modrá vnútri rámika */
+  margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);
+  isolation:isolate; /* aby blend fungoval len vnútri rámika */
+}
+.map-img{
+  width:100%;height:auto;display:block;
+  /* Ak má obrazok biele pozadie a čierny obrys: multiply zabezpečí, že biela „zmizne“ do modrej */
+  mix-blend-mode:multiply; 
+  /* spravíme jemný zelený halo okolo obrysu, nie na celé pozadie */
+  filter:
+    drop-shadow(0 0 0 #5cba47)
+    drop-shadow(0 0 8px #5cba47)
+    drop-shadow(0 0 14px #5cba47);
+  opacity:.95;
+}
+.pin{position:absolute;display:flex;align-items:center;gap:.5rem;
+     color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47}
+.pin .dot{width:10px;height:10px;background:#5cba47;border-radius:50%;
+         box-shadow:0 0 12px #5cba47}
+.pin .ring{position:absolute;inset:auto;left:0;top:0;
+           transform:translate(-2px,-2px);width:14px;height:14px;
+           border:2px solid #5cba47;border-radius:50%;opacity:.9;
+           animation:pinPulse 2s ease-out infinite}
+@keyframes pinPulse{0%{transform:translate(-2px,-2px) scale(1);opacity:.9}
+100%{transform:translate(-2px,-2px) scale(2.4);opacity:0}}
 
   /* Grid help */
   .grid{display:grid;gap:20px}
