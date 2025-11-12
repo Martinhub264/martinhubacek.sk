@@ -64,35 +64,27 @@
   .overlay .close{position:absolute;top:14px;right:16px;border:1px solid #ffffff44;border-radius:999px;padding:.45rem .75rem;font-weight:700;background:#fff1;color:#fff}
   .calc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 
-  /* Mapa SR – raster outline + modré pozadie + zelený „glow“ iba na obrys */
-.map-wrap{
-  position:relative;width:100%;max-width:720px;
-  border:1px solid var(--line);border-radius:16px;
-  background:#0f1746; /* tmavá modrá vnútri rámika */
-  margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);
-  isolation:isolate; /* aby blend fungoval len vnútri rámika */
-}
-.map-img{
-  width:100%;height:auto;display:block;
-  /* Ak má obrazok biele pozadie a čierny obrys: multiply zabezpečí, že biela „zmizne“ do modrej */
-  mix-blend-mode:multiply; 
-  /* spravíme jemný zelený halo okolo obrysu, nie na celé pozadie */
-  filter:
-    drop-shadow(0 0 0 #5cba47)
-    drop-shadow(0 0 8px #5cba47)
-    drop-shadow(0 0 14px #5cba47);
-  opacity:.95;
-}
-.pin{position:absolute;display:flex;align-items:center;gap:.5rem;
-     color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47}
-.pin .dot{width:10px;height:10px;background:#5cba47;border-radius:50%;
-         box-shadow:0 0 12px #5cba47}
-.pin .ring{position:absolute;inset:auto;left:0;top:0;
-           transform:translate(-2px,-2px);width:14px;height:14px;
-           border:2px solid #5cba47;border-radius:50%;opacity:.9;
-           animation:pinPulse 2s ease-out infinite}
-@keyframes pinPulse{0%{transform:translate(-2px,-2px) scale(1);opacity:.9}
-100%{transform:translate(-2px,-2px) scale(2.4);opacity:0}}
+  /* Mapa SR – outline + modré pozadie + zelený glow (orezaný do rohov) */
+  .map-wrap{
+    position:relative;width:100%;max-width:720px;
+    border:1px solid var(--line);border-radius:16px;
+    background:#0f1746;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);
+    overflow:hidden;isolation:isolate;
+  }
+  .map-img{
+    width:100%;height:auto;display:block;border-radius:inherit;
+    mix-blend-mode:multiply;
+    filter:drop-shadow(0 0 0 #5cba47) drop-shadow(0 0 8px #5cba47) drop-shadow(0 0 14px #5cba47);
+    opacity:.95;
+  }
+  .pin{position:absolute;display:flex;align-items:center;gap:.5rem;color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47;pointer-events:none}
+  .pin .dot{width:10px;height:10px;background:#5cba47;border-radius:50%;box-shadow:0 0 12px #5cba47}
+  .pin .ring{position:absolute;left:0;top:0;transform:translate(-2px,-2px);width:14px;height:14px;border:2px solid #5cba47;border-radius:50%;opacity:.9;animation:pinPulse 2s ease-out infinite}
+  @keyframes pinPulse{0%{transform:translate(-2px,-2px) scale(1);opacity:.9}100%{transform:translate(-2px,-2px) scale(2.4);opacity:0}}
+
+  /* Role text */
+  .role-main{font-weight:800;font-size:18px}
+  .role-sub{margin-top:.2rem}
 
   /* Grid help */
   .grid{display:grid;gap:20px}
@@ -131,16 +123,26 @@
     <div class="reveal">
       <h1 style="font:800 48px/1.08 Inter,system-ui">Finančný sprievodca pre ľudí, nie pre produkty.</h1>
       <p class="muted" style="font-size:20px;margin-top:.5rem">Zmapujem vašu situáciu, ukážem možnosti a spolu vyberieme riešenie, ktoré dáva zmysel dnes aj o 5 rokov.</p>
+
       <div style="margin-top:1.25rem;display:flex;gap:.75rem;flex-wrap:wrap">
         <a href="#kontakt" class="btn btn-primary" onclick="gtag('event','cta_click',{label:'hero_start'})">Začať spoluprácu</a>
         <a href="#" id="open-calcs-2" class="btn btn-outline">Rýchle kalkulačky</a>
       </div>
-      <p class="small muted" style="margin-top:.75rem"><strong>Riaditeľ ViaVero</strong>· <strog>NBS reg.č. 287587</strog></p>
+
+      <!-- Zväčšený titul + NBS pod ním -->
+      <div style="margin-top:.9rem">
+        <div class="role-main">Riaditeľ ViaVero</div>
+        <div class="role-sub small muted">NBS reg. č. 287587</div>
+      </div>
     </div>
+
     <div class="reveal" style="transition-delay:.08s">
       <figure class="hero-figure">
-        <img id="portrait" src="martin-hubacek.jpg" alt="Ing. Martin Hubáček – profilová fotografia" onerror="this.style.display='none';document.getElementById('ph').style.display='grid'" style="width:100%;height:520px;object-fit:cover">
-        <div id="ph" class="placeholder" style="display:none;width:100%;height:520px">Sem nahrám fotku: <strong>martin-hubacek.png</strong></div>
+        <img id="portrait" src="assets/martin-hubacek.jpg"
+             alt="Ing. Martin Hubáček – profilová fotografia"
+             onerror="this.style.display='none';document.getElementById('ph').style.display='grid'"
+             style="width:100%;height:520px;object-fit:cover">
+        <div id="ph" class="placeholder" style="display:none;width:100%;height:520px">Sem nahrám fotku: <strong>assets/martin-hubacek.jpg</strong></div>
         <div class="badge">13+ rokov skúseností</div>
       </figure>
     </div>
@@ -157,25 +159,19 @@
     </div>
   </section>
 
-  <!-- Mapa SR – podľa tvojej predlohy -->
+  <!-- Mapa SR -->
   <section id="mapa" style="padding:40px 0">
     <h2 class="reveal" style="font:800 32px/1.2 Inter">Kde ma nájdete</h2>
     <p class="muted reveal">Nájdete nás v týchto mestách.</p>
 
     <div class="map-wrap reveal">
-      <!-- nahraj súbor priamo vedľa index.html pod názvom mapa-sr.png -->
-      <img src="mapa-sr.png" alt="Mapa Slovenska – obrys" class="map-img" onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'display:grid;place-items:center;height:380px;color:#9aa7ff;',innerText:'Sem vložím obrázok: mapa-sr.png'}))">
+      <img src="assets/mapa-sr.png" alt="Mapa Slovenska – obrys" class="map-img"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'display:grid;place-items:center;height:380px;color:#9aa7ff;',innerText:'Sem vložím obrázok: assets/mapa-sr.png'}))">
 
-      <!-- značky miest (percentá sú relatívne k obrázku) -->
-      <div class="pin" style="left:5%; top:71%;">
-        <span class="ring"></span><span class="dot"></span><span>Bratislava</span>
-      </div>
-      <div class="pin" style="left:23%; top:32%;">
-        <span class="ring"></span><span class="dot"></span><span>Trenčín</span>
-      </div>
-      <div class="pin" style="left:33%; top:25%;">
-        <span class="ring"></span><span class="dot"></span><span>Martin</span>
-      </div>
+      <!-- značky miest -->
+      <div class="pin" style="left:8.5%; top:74%;"><span class="ring"></span><span class="dot"></span><span>Bratislava</span></div>
+      <div class="pin" style="left:33%;  top:47%;"><span class="ring"></span><span class="dot"></span><span>Trenčín</span></div>
+      <div class="pin" style="left:48%;  top:39%;"><span class="ring"></span><span class="dot"></span><span>Martin</span></div>
     </div>
   </section>
 
