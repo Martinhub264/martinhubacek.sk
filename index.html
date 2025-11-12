@@ -39,7 +39,7 @@
   .muted{color:#ffffffb3}
   .small{font-size:.9rem}
 
-  /* Progress (vrchná čiara + „zostáva %“) */
+  /* Progress */
   .progress-wrap{position:fixed;inset:0 0 auto 0;height:6px;background:#00000033;z-index:60}
   .progress{height:100%;width:0;background:linear-gradient(90deg,var(--brand),#b9f1a8)}
   .remain{position:fixed;top:9px;right:12px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);padding:.15rem .55rem;border-radius:8px;font-size:.78rem}
@@ -64,7 +64,7 @@
   .overlay .close{position:absolute;top:14px;right:16px;border:1px solid #ffffff44;border-radius:999px;padding:.45rem .75rem;font-weight:700;background:#fff1;color:#fff}
   .calc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 
-  /* Mapa SR – outline + modré pozadie + zelený glow (orezaný do rohov) */
+  /* Mapa SR – outline + modré pozadie + orez do rohov (kvôli tieňu) */
   .map-wrap{
     position:relative;width:100%;max-width:720px;
     border:1px solid var(--line);border-radius:16px;
@@ -86,7 +86,7 @@
   .role-main{font-weight:800;font-size:18px}
   .role-sub{margin-top:.2rem}
 
-  /* Grid help */
+  /* Grid */
   .grid{display:grid;gap:20px}
   .col-2{grid-template-columns:1fr}
   @media(min-width:900px){.col-2{grid-template-columns:1.1fr .9fr}}
@@ -129,7 +129,7 @@
         <a href="#" id="open-calcs-2" class="btn btn-outline">Rýchle kalkulačky</a>
       </div>
 
-      <!-- Zväčšený titul + NBS pod ním -->
+      <!-- Riaditeľ + NBS -->
       <div style="margin-top:.9rem">
         <div class="role-main">Riaditeľ ViaVero</div>
         <div class="role-sub small muted">NBS reg. č. 287587</div>
@@ -138,11 +138,14 @@
 
     <div class="reveal" style="transition-delay:.08s">
       <figure class="hero-figure">
-        <img id="portrait" src="assets/martin-hubacek.jpg"
+        <!-- len doplnená fotka; názov nechávam .jpg -->
+        <img id="portrait" src="martin-hubacek.jpg"
              alt="Ing. Martin Hubáček – profilová fotografia"
              onerror="this.style.display='none';document.getElementById('ph').style.display='grid'"
              style="width:100%;height:520px;object-fit:cover">
-        <div id="ph" class="placeholder" style="display:none;width:100%;height:520px">Sem nahrám fotku: <strong>assets/martin-hubacek.jpg</strong></div>
+        <div id="ph" class="placeholder" style="display:none;width:100%;height:520px">
+          Sem nahrám fotku: <strong>martin-hubacek.jpg</strong>
+        </div>
         <div class="badge">13+ rokov skúseností</div>
       </figure>
     </div>
@@ -159,16 +162,15 @@
     </div>
   </section>
 
-  <!-- Mapa SR -->
+  <!-- Mapa SR (cesta NEZMENENÁ) -->
   <section id="mapa" style="padding:40px 0">
     <h2 class="reveal" style="font:800 32px/1.2 Inter">Kde ma nájdete</h2>
     <p class="muted reveal">Nájdete nás v týchto mestách.</p>
 
     <div class="map-wrap reveal">
-      <img src="assets/mapa-sr.png" alt="Mapa Slovenska – obrys" class="map-img"
-           onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'display:grid;place-items:center;height:380px;color:#9aa7ff;',innerText:'Sem vložím obrázok: assets/mapa-sr.png'}))">
+      <img src="mapa-sr.png" alt="Mapa Slovenska – obrys" class="map-img"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'display:grid;place-items:center;height:380px;color:#9aa7ff;',innerText:'Sem vložím obrázok: mapa-sr.png'}))">
 
-      <!-- značky miest -->
       <div class="pin" style="left:8.5%; top:74%;"><span class="ring"></span><span class="dot"></span><span>Bratislava</span></div>
       <div class="pin" style="left:33%;  top:47%;"><span class="ring"></span><span class="dot"></span><span>Trenčín</span></div>
       <div class="pin" style="left:48%;  top:39%;"><span class="ring"></span><span class="dot"></span><span>Martin</span></div>
