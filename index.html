@@ -20,17 +20,22 @@
   body{margin:0;background:var(--navy);color:#fff;font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
   a{color:inherit;text-decoration:none}
   .container{max-width:1120px;margin:0 auto;padding:0 20px}
-  .header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:var(--glass);border-bottom:1px solid var(--line)}
-  .nav{height:64px;display:flex;align-items:center;justify-content:space-between}
-  .nav a{color:#ffffffcc;margin-left:18px}
-  .nav a:hover{color:var(--brand)}
 
-  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.25rem;border-radius:999px;font-weight:700;letter-spacing:.2px;position:relative;overflow:hidden;transform:translateZ(0)}
+  /* Header */
+  .header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:var(--glass);border-bottom:1px solid var(--line)}
+  .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .nav a{color:#ffffffcc}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap}
+  .nav-right{display:flex;gap:16px;align-items:center}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1rem;border-radius:999px;font-weight:700;letter-spacing:.2px;position:relative;overflow:hidden;transform:translateZ(0);line-height:1}
   .btn-primary{background:var(--brand);color:#00170a;box-shadow:0 12px 30px rgba(92,186,71,.25)}
-  .btn-outline{border:1px solid #ffffff40}
+  .btn-outline{border:1px solid #ffffff80;color:#fff}
+  .btn-outline:hover{border-color:#ffffffcc}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(92,186,71,.35)}
-  .btn-primary::after{content:"";position:absolute;inset:-20px;border-radius:50%;background:#fff6;transform:scale(0);opacity:.0;transition:.35s}
-  .btn-primary:active::after{transform:scale(1);opacity:.0}
+  .btn-primary::after{content:"";position:absolute;inset:-20px;border-radius:50%;background:#fff6;transform:scale(0);opacity:0;transition:.35s}
+  .btn-primary:active::after{transform:scale(1);opacity:0}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(92,186,71,.45)}50%{box-shadow:0 0 0 14px rgba(92,186,71,0)}}
   .btn-primary.pulse{animation:pulse 2.6s ease-in-out infinite}
 
@@ -65,18 +70,8 @@
   .calc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 
   /* Mapa SR – outline + modré pozadie + orez do rohov (kvôli tieňu) */
-  .map-wrap{
-    position:relative;width:100%;max-width:720px;
-    border:1px solid var(--line);border-radius:16px;
-    background:#0f1746;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);
-    overflow:hidden;isolation:isolate;
-  }
-  .map-img{
-    width:100%;height:auto;display:block;border-radius:inherit;
-    mix-blend-mode:multiply;
-    filter:drop-shadow(0 0 0 #5cba47) drop-shadow(0 0 8px #5cba47) drop-shadow(0 0 14px #5cba47);
-    opacity:.95;
-  }
+  .map-wrap{position:relative;width:100%;max-width:720px;border:1px solid var(--line);border-radius:16px;background:#0f1746;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);overflow:hidden;isolation:isolate}
+  .map-img{width:100%;height:auto;display:block;border-radius:inherit;mix-blend-mode:multiply;filter:drop-shadow(0 0 0 #5cba47) drop-shadow(0 0 8px #5cba47) drop-shadow(0 0 14px #5cba47);opacity:.95}
   .pin{position:absolute;display:flex;align-items:center;gap:.5rem;color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47;pointer-events:none}
   .pin .dot{width:10px;height:10px;background:#5cba47;border-radius:50%;box-shadow:0 0 12px #5cba47}
   .pin .ring{position:absolute;left:0;top:0;transform:translate(-2px,-2px);width:14px;height:14px;border:2px solid #5cba47;border-radius:50%;opacity:.9;animation:pinPulse 2s ease-out infinite}
@@ -104,17 +99,19 @@
 <!-- Header -->
 <header class="header">
   <div class="container nav">
-    <a href="#home" class="small muted" style="display:flex;align-items:center;gap:.6rem">
-      <span style="display:inline-flex;align-items:center;justify-content:center;width:108px;height:26px;background:linear-gradient(90deg,#fff,#e8f3ff);border-radius:6px;color:#0b1029;font-weight:800;font-size:12px;letter-spacing:.12em">VIAVERO</span>
-      ViaVero – Váš partner pre financie
-    </a>
-    <nav class="small">
-      <a href="#sluzby">Služby</a>
+    <!-- ĽAVÁ STRANA: nové biele tlačidlá -->
+    <div class="pill-row">
+      <a id="btn-bike" class="btn btn-outline" href="https://bikepoistenie.sk/" target="_blank" rel="noopener">Bikepoistenie</a>
+      <a id="btn-sklad" class="btn btn-outline" href="https://poistenieskladu.sk/" target="_blank" rel="noopener">Poistenie skladu</a>
+      <a id="btn-hypo"  class="btn btn-outline" href="#" >Hypotéky</a>
+      <a id="btn-dochodok" class="btn btn-outline" href="dochodok.html" target="_blank" rel="noopener">Dôchodok</a>
+    </div>
+
+    <!-- PRAVÁ STRANA: nechaj len Kalkulačky + Kontakt -->
+    <div class="nav-right small">
       <a href="#" id="open-calcs">Kalkulačky</a>
-      <a href="#o-mne">O mne</a>
-      <a href="#mapa">Kde ma nájdete</a>
       <a href="#kontakt">Kontakt</a>
-    </nav>
+    </div>
   </div>
 </header>
 
@@ -129,7 +126,6 @@
         <a href="#" id="open-calcs-2" class="btn btn-outline">Rýchle kalkulačky</a>
       </div>
 
-      <!-- Riaditeľ + NBS -->
       <div style="margin-top:.9rem">
         <div class="role-main">Riaditeľ ViaVero</div>
         <div class="role-sub small muted">NBS reg. č. 287587</div>
@@ -138,7 +134,7 @@
 
     <div class="reveal" style="transition-delay:.08s">
       <figure class="hero-figure">
-        <!-- len doplnená fotka; názov nechávam .jpg -->
+        <!-- Fotka – súbor daj vedľa index.html ako presne: martin-hubacek.jpg -->
         <img id="portrait" src="martin-hubacek.jpg"
              alt="Ing. Martin Hubáček – profilová fotografia"
              onerror="this.style.display='none';document.getElementById('ph').style.display='grid'"
@@ -162,7 +158,7 @@
     </div>
   </section>
 
-  <!-- Mapa SR (cesta NEZMENENÁ) -->
+  <!-- Mapa SR (pôvodné pozície) -->
   <section id="mapa" style="padding:40px 0">
     <h2 class="reveal" style="font:800 32px/1.2 Inter">Kde ma nájdete</h2>
     <p class="muted reveal">Nájdete nás v týchto mestách.</p>
@@ -171,9 +167,9 @@
       <img src="mapa-sr.png" alt="Mapa Slovenska – obrys" class="map-img"
            onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'display:grid;place-items:center;height:380px;color:#9aa7ff;',innerText:'Sem vložím obrázok: mapa-sr.png'}))">
 
-      <div class="pin" style="left:8.5%; top:74%;"><span class="ring"></span><span class="dot"></span><span>Bratislava</span></div>
-      <div class="pin" style="left:33%;  top:47%;"><span class="ring"></span><span class="dot"></span><span>Trenčín</span></div>
-      <div class="pin" style="left:48%;  top:39%;"><span class="ring"></span><span class="dot"></span><span>Martin</span></div>
+      <div class="pin" style="left:5%; top:71%;"><span class="ring"></span><span class="dot"></span><span>Bratislava</span></div>
+      <div class="pin" style="left:23%; top:32%;"><span class="ring"></span><span class="dot"></span><span>Trenčín</span></div>
+      <div class="pin" style="left:33%; top:25%;"><span class="ring"></span><span class="dot"></span><span>Martin</span></div>
     </div>
   </section>
 
@@ -263,6 +259,17 @@
   document.getElementById('close-calcs').addEventListener('click',e=>{e.preventDefault();closeCalcs()});
   window.addEventListener('popstate',()=>{ if(location.hash==='#kalkulacky') overlay.classList.add('on'); else overlay.classList.remove('on'); });
   if(location.hash==='#kalkulacky') overlay.classList.add('on');
+
+  // Tlačidlá vľavo – po kliknutí prefarbiť na zeleno
+  function activateAndOpen(id, url){
+    const el=document.getElementById(id);
+    el.classList.remove('btn-outline'); el.classList.add('btn-primary');
+    if(url){ window.open(url, '_blank','noopener'); }
+  }
+  document.getElementById('btn-bike').addEventListener('click', function(e){ activateAndOpen('btn-bike','https://bikepoistenie.sk/'); });
+  document.getElementById('btn-sklad').addEventListener('click', function(e){ activateAndOpen('btn-sklad','https://poistenieskladu.sk/'); });
+  document.getElementById('btn-hypo').addEventListener('click', function(e){ e.preventDefault(); activateAndOpen('btn-hypo'); /* zatiaľ bez presmerovania */ });
+  document.getElementById('btn-dochodok').addEventListener('click', function(){ activateAndOpen('btn-dochodok'); /* otvorí sa v novom okne cez href */ });
 
   // Klikací ripple pre zelené tlačidlá
   document.querySelectorAll('.btn-primary').forEach(btn=>{
