@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dôchodok – 1. až 4. pilier | Ing. Martin Hubáček</title>
+<meta name="description" content="Zrozumiteľný prehľad dôchodkových pilierov: Sociálna poisťovňa, II. pilier (DSS), III. pilier a investície ako doplnok.">
+<link rel="canonical" href="https://www.martinhubacek.sk/dochodok.html">
+<meta name="theme-color" content="#222e62">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- GA4 (rovnaké G-ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQJC3DTEVK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-WQJC3DTEVK');</script>
+
+<style>
+  :root{
+    --navy:#222e62;
+    --brand:#5cba47;
+    --line:rgba(255,255,255,.12);
+    --glass:rgba(255,255,255,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--navy);color:#fff;font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  .header{position:sticky;top:0;z-index:30;background:var(--glass);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1rem;border-radius:999px;font-weight:700;line-height:1;border:1px solid #ffffff55}
+  .btn:hover{border-color:#ffffffcc}
+  .btn-primary{background:var(--brand);border-color:transparent;color:#00170a;box-shadow:0 12px 30px rgba(92,186,71,.25)}
+  .tag{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:999px;padding:.3rem .6rem;color:#ffffffcc}
+  .muted{color:#ffffffb3}
+  .small{font-size:.9rem}
+
+  /* Hero */
+  .hero{padding:48px 0 12px}
+  h1{font:800 44px/1.1 Inter;margin:0 0 .5rem}
+  p.lead{font-size:18px;color:#ffffffcc;max-width:70ch}
+
+  /* Timeline so pillars */
+  .grid{display:grid;gap:26px}
+  .col-2{grid-template-columns:1fr}
+  @media(min-width:900px){.col-2{grid-template-columns:1fr 1fr}}
+
+  .pillar{
+    position:relative;border:1px solid var(--line);background:rgba(255,255,255,.04);
+    border-radius:16px;padding:18px 18px 18px 18px;overflow:hidden
+  }
+  .badge-num{
+    position:absolute;top:14px;
+    width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+    color:#00170a;background:var(--brand);font:800 28px/1 Inter;
+    box-shadow:0 0 0 0 rgba(92,186,71,.55), 0 8px 24px rgba(0,0,0,.35);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  /* left / right alternácia */
+  .left  .badge-num{left:-28px}
+  .right .badge-num{right:-28px}
+  @media(max-width:899px){.left .badge-num,.right .badge-num{left:-28px;right:auto}}
+
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(92,186,71,.55)}
+    50%{box-shadow:0 0 0 18px rgba(92,186,71,0)}
+    100%{box-shadow:0 0 0 0 rgba(92,186,71,.55)}
+  }
+
+  .pillar h3{font:800 22px/1.2 Inter;margin:0 0 .35rem}
+  .pill-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:.4rem}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:.2rem .55rem;font-size:.82rem;color:#cfe9d1}
+
+  /* Neon "stopy" medzi piliermi */
+  .track{position:relative;height:80px}
+  .foot{position:absolute;width:16px;height:10px;border-radius:16px;background:var(--brand);
+        filter:drop-shadow(0 0 8px var(--brand)) drop-shadow(0 0 12px var(--brand));
+        opacity:.9;transform:rotate(12deg);animation:fadeWalk 2.8s linear infinite}
+  .foot.r{transform:rotate(-12deg)}
+  @keyframes fadeWalk{
+    0%{opacity:.95}
+    80%{opacity:.1}
+    100%{opacity:0}
+  }
+  /* rozmiestnenie stôp – desktop */
+  @media(min-width:900px){
+    .t1 .foot{top:26px}
+    .t1 .f1{left:48%}.t1 .f2{left:52%}.t1 .f3{left:56%}.t1 .f4{left:60%}.t1 .f5{left:64%}
+    .t2 .foot{top:34px}
+    .t2 .f1{left:36%}.t2 .f2{left:32%}.t2 .f3{left:28%}.t2 .f4{left:24%}.t2 .f5{left:20%}
+    .t3 .foot{top:30px}
+    .t3 .f1{left:50%}.t3 .f2{left:54%}.t3 .f3{left:58%}.t3 .f4{left:62%}.t3 .f5{left:66%}
+  }
+  /* mobil – jednoduchý zvislý chodník */
+  @media(max-width:899px){
+    .track{height:60px}
+    .foot{left:49%;transform:translateX(-50%) rotate(0)}
+    .t1 .f1{top:8px}.t1 .f2{top:20px}.t1 .f3{top:32px}.t1 .f4{top:44px}.t1 .f5{top:56px}
+    .t2 .f1{top:8px}.t2 .f2{top:20px}.t2 .f3{top:32px}.t2 .f4{top:44px}.t2 .f5{top:56px}
+    .t3 .f1{top:8px}.t3 .f2{top:20px}.t3 .f3{top:32px}.t3 .f4{top:44px}.t3 .f5{top:56px}
+  }
+
+  /* CTA bar */
+  .cta{margin:26px 0 44px;display:flex;gap:12px;flex-wrap:wrap}
+  .cta .btn-primary{padding:.85rem 1.25rem}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="index.html" class="btn">⟵ Späť na hlavnú</a>
+    <div style="display:flex;gap:10px">
+      <a href="#pilier1" class="tag">1. pilier</a>
+      <a href="#pilier2" class="tag">2. pilier</a>
+      <a href="#pilier3" class="tag">3. pilier</a>
+      <a href="#pilier4" class="tag">4. Investície</a>
+    </div>
+  </div>
+</header>
+
+<main class="container hero">
+  <h1>Dôchodok zrozumiteľne: 1 → 4</h1>
+  <p class="lead">Pozrieme sa, čo dáva zmysel dnes aj o 20 rokov: povinný priebežný systém (Sociálna poisťovňa), kapitalizačný <strong>II. pilier (DSS)</strong>, doplnkové <strong>III. pilier</strong> a rozumné <strong>investície</strong> ako diverzifikácia. Na osobnom stretnutí spravíme výpočet a plán pre tvoju situáciu.</p>
+
+  <div class="cta">
+    <a href="#kontakt" class="btn">Chcem konzultáciu</a>
+    <a href="https://adss.sk/dochodkovy-system#odvody-na-starobne-poistenie" target="_blank" rel="noopener" class="btn">Oficiálne info k odvodom</a>
+    <a href="index.html#kalkulacky" class="btn btn-primary">Vypočítať orientačne</a>
+  </div>
+
+  <!-- 1 + 2 -->
+  <div class="grid col-2">
+    <!-- 1. pilier -->
+    <section id="pilier1" class="pillar left">
+      <div class="badge-num">1</div>
+      <h3>Sociálna poisťovňa (priebežný systém)</h3>
+      <div class="pill-meta">
+        <span class="chip">Povinný</span>
+        <span class="chip">Solidárny</span>
+        <span class="chip">Nadväzuje na odpracované roky a odvody</span>
+      </div>
+      <p class="muted">Základ dôchodku na Slovensku. Odvody pracujúcich sa používajú na výplatu dnešných dôchodkov. Zmysel: istý základ, ktorý dopĺňame o kapitálovú časť.</p>
+    </section>
+
+    <!-- 2. pilier -->
+    <section id="pilier2" class="pillar right">
+      <div class="badge-num">2</div>
+      <h3>II. pilier – dôchodkové správcovské spoločnosti (DSS)</h3>
+      <div class="pill-meta">
+        <span class="chip">Kapitálový</span>
+        <span class="chip">Individuálny účet</span>
+        <span class="chip">Voľba fondu (indexový / zmiešaný)</span>
+      </div>
+      <p class="muted">Časť tvojich odvodov smeruje na vlastný účet v DSS a investuje sa. Dôležitá je voľba fondu a disciplína. Výplata v dôchodku formou anuitných produktov / programového výberu.</p>
+    </section>
+  </div>
+
+  <!-- stopy 1 -> 2 -->
+  <div class="track t1" aria-hidden="true">
+    <span class="foot f1"></span><span class="foot r f2" style="animation-delay:.2s"></span>
+    <span class="foot f3" style="animation-delay:.4s"></span><span class="foot r f4" style="animation-delay:.6s"></span>
+    <span class="foot f5" style="animation-delay:.8s"></span>
+  </div>
+
+  <!-- 3 + 4 -->
+  <div class="grid col-2">
+    <!-- 3. pilier -->
+    <section id="pilier3" class="pillar left">
+      <div class="badge-num">3</div>
+      <h3>III. pilier – doplnkové dôchodkové sporenie</h3>
+      <div class="pill-meta">
+        <span class="chip">Dobrovoľný</span>
+        <span class="chip">Daňové zvýhodnenie</span>
+        <span class="chip">Príspevok zamestnávateľa</span>
+      </div>
+      <p class="muted">Zmysluplný doplnok, ak ti prispieva zamestnávateľ. Kombinácia vlastného príspevku + bonusu od firmy + daňovej úľavy vie spraviť rozdiel v cieli.</p>
+    </section>
+
+    <!-- 4. pilier -->
+    <section id="pilier4" class="pillar right">
+      <div class="badge-num">4</div>
+      <h3>Investície – „4. pilier“ ako diverzifikácia</h3>
+      <div class="pill-meta">
+        <span class="chip">Flexibilita</span>
+        <span class="chip">Likvidita</span>
+        <span class="chip">Dlhodobý horizont</span>
+      </div>
+      <p class="muted">Pravidelné investovanie mimo pilierov (ETF, kvalitné fondy, portfóliá) pomáha rozložiť riziko a udržať kúpnu silu úspor. Všetko nastavíme tak, aby ťa to „nebolelo“ v rozpočte.</p>
+    </section>
+  </div>
+
+  <!-- stopy 3 -> 4 -->
+  <div class="track t2" aria-hidden="true">
+    <span class="foot f1"></span><span class="foot r f2" style="animation-delay:.2s"></span>
+    <span class="foot f3" style="animation-delay:.4s"></span><span class="foot r f4" style="animation-delay:.6s"></span>
+    <span class="foot f5" style="animation-delay:.8s"></span>
+  </div>
+
+  <!-- posledný chodník smerom k CTA -->
+  <div class="track t3" aria-hidden="true">
+    <span class="foot f1"></span><span class="foot r f2" style="animation-delay:.2s"></span>
+    <span class="foot f3" style="animation-delay:.4s"></span><span class="foot r f4" style="animation-delay:.6s"></span>
+    <span class="foot f5" style="animation-delay:.8s"></span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <a href="index.html#kontakt" class="btn btn-primary">Nezáväzná konzultácia o dôchodku</a>
+    <a href="index.html#kalkulacky" class="btn">Otvoriť kalkulačky</a>
+  </div>
+
+  <p class="small muted">Pozn.: Základné mechanizmy a termíny vychádzajú z verejne dostupných zdrojov (napr. portál DSS / ADSS). Presné percentá a podmienky sa môžu meniť; finálny návrh nastavíme podľa aktuálnej legislatívy a tvojho profilu.</p>
+</main>
+
+<footer style="border-top:1px solid var(--line);padding:22px 0;color:#ffffffbf">
+  <div class="container small" style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <p>© <span id="rok"></span> Ing. Martin Hubáček</p>
+    <p class="muted">GDPR: <a class="muted" href="https://finportal.sk/files/ochrana-osobnych-udajov-finportal-2024.pdf" target="_blank" rel="noopener">Zásady ochrany súkromia (Finportal)</a></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('rok').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
