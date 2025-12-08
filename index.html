@@ -14,7 +14,13 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-WQJC3DTEVK');</script>
 
 <style>
-  :root{--navy:#222e62;--brand:#5cba47;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.12)}
+  :root{
+    --navy:#222e62;
+    --brand:#5cba47;
+    --glass:rgba(255,255,255,.06);
+    --line:rgba(255,255,255,.12);
+    --attention:#ff9f43; /* oranžová pre pulz kalkulačky */
+  }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--navy);color:#fff;font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
@@ -24,20 +30,31 @@
   /* Header */
   .header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:var(--glass);border-bottom:1px solid var(--line)}
   .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .nav a{color:#ffffffcc}
   .pill-row{display:flex;gap:10px;flex-wrap:wrap}
-  .nav-right{display:flex;gap:16px;align-items:center}
+  .nav-right{display:flex;gap:10px;align-items:center}
 
   /* Buttons */
-  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1rem;border-radius:999px;font-weight:700;letter-spacing:.2px;position:relative;overflow:hidden;transform:translateZ(0);line-height:1}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.6rem 1rem;border-radius:999px;font-weight:700;letter-spacing:.2px;position:relative;overflow:hidden;transform:translateZ(0);line-height:1;color:#fff}
   .btn-primary{background:var(--brand);color:#00170a;box-shadow:0 12px 30px rgba(92,186,71,.25)}
-  .btn-outline{border:1px solid #ffffff80;color:#fff}
+  .btn-outline{border:1px solid #ffffff80}
   .btn-outline:hover{border-color:#ffffffcc}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(92,186,71,.35)}
   .btn-primary::after{content:"";position:absolute;inset:-20px;border-radius:50%;background:#fff6;transform:scale(0);opacity:0;transition:.35s}
   .btn-primary:active::after{transform:scale(1);opacity:0}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(92,186,71,.45)}50%{box-shadow:0 0 0 14px rgba(92,186,71,0)}}
   .btn-primary.pulse{animation:pulse 2.6s ease-in-out infinite}
+
+  /* ORANŽOVÉ pulzovanie pre tlačidlo Kalkulačky */
+  .btn-attention{
+    border-color:var(--attention)!important;
+    box-shadow:0 0 0 0 rgba(255,159,67,.7);
+    animation:orangePulse 3.2s ease-in-out infinite;
+  }
+  @keyframes orangePulse{
+    0%{box-shadow:0 0 0 0 rgba(255,159,67,.65)}
+    50%{box-shadow:0 0 0 16px rgba(255,159,67,0)}
+    100%{box-shadow:0 0 0 0 rgba(255,159,67,.65)}
+  }
 
   .card{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:16px;padding:18px;transition:transform .2s ease, box-shadow .2s ease}
   .card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.25)}
@@ -69,7 +86,7 @@
   .overlay .close{position:absolute;top:14px;right:16px;border:1px solid #ffffff44;border-radius:999px;padding:.45rem .75rem;font-weight:700;background:#fff1;color:#fff}
   .calc-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 
-  /* Mapa SR – outline + modré pozadie + orez do rohov (kvôli tieňu) */
+  /* Mapa SR – outline + modré pozadie */
   .map-wrap{position:relative;width:100%;max-width:720px;border:1px solid var(--line);border-radius:16px;background:#0f1746;margin-top:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);overflow:hidden;isolation:isolate}
   .map-img{width:100%;height:auto;display:block;border-radius:inherit;mix-blend-mode:multiply;filter:drop-shadow(0 0 0 #5cba47) drop-shadow(0 0 8px #5cba47) drop-shadow(0 0 14px #5cba47);opacity:.95}
   .pin{position:absolute;display:flex;align-items:center;gap:.5rem;color:#5cba47;font-weight:800;text-shadow:0 0 10px #5cba47;pointer-events:none}
@@ -99,18 +116,18 @@
 <!-- Header -->
 <header class="header">
   <div class="container nav">
-    <!-- ĽAVÁ STRANA: nové biele tlačidlá -->
+    <!-- ĽAVÁ STRANA: biele tlačidlá -->
     <div class="pill-row">
       <a id="btn-bike" class="btn btn-outline" href="https://bikepoistenie.sk/" target="_blank" rel="noopener">Bikepoistenie</a>
       <a id="btn-sklad" class="btn btn-outline" href="https://poistenieskladu.sk/" target="_blank" rel="noopener">Poistenie skladu</a>
-      <a id="btn-hypo"  class="btn btn-outline" href="#" >Hypotéky</a>
+      <a id="btn-hypo"  class="btn btn-outline" href="#">Hypotéky</a>
       <a id="btn-dochodok" class="btn btn-outline" href="dochodok.html" target="_blank" rel="noopener">Dôchodok</a>
     </div>
 
-    <!-- PRAVÁ STRANA: nechaj len Kalkulačky + Kontakt -->
-    <div class="nav-right small">
-      <a href="#" id="open-calcs">Kalkulačky</a>
-      <a href="#kontakt">Kontakt</a>
+    <!-- PRAVÁ STRANA: jednotné tlačidlá (Kalkulačky pulzujú oranžovo) -->
+    <div class="nav-right">
+      <a href="#" id="open-calcs" class="btn btn-outline btn-attention">Kalkulačky</a>
+      <a href="#kontakt" id="btn-kontakt" class="btn btn-outline">Kontakt</a>
     </div>
   </div>
 </header>
@@ -140,7 +157,7 @@
              onerror="this.style.display='none';document.getElementById('ph').style.display='grid'"
              style="width:100%;height:520px;object-fit:cover">
         <div id="ph" class="placeholder" style="display:none;width:100%;height:520px">
-          Sem nahrám fotku: <strong>martin-hubacek.jpg</strong>
+          Sem nahrám obrázok: <strong>martin-hubacek.jpg</strong>
         </div>
         <div class="badge">13+ rokov skúseností</div>
       </figure>
@@ -260,14 +277,14 @@
   window.addEventListener('popstate',()=>{ if(location.hash==='#kalkulacky') overlay.classList.add('on'); else overlay.classList.remove('on'); });
   if(location.hash==='#kalkulacky') overlay.classList.add('on');
 
-  // Tlačidlá vľavo – po kliknutí prefarbiť na zeleno
+  // Ľavé tlačidlá – po kliknutí prefarbiť na zeleno a (ak je URL) otvoriť nové okno
   function activateAndOpen(id, url){
     const el=document.getElementById(id);
     el.classList.remove('btn-outline'); el.classList.add('btn-primary');
     if(url){ window.open(url, '_blank','noopener'); }
   }
-  document.getElementById('btn-bike').addEventListener('click', function(e){ activateAndOpen('btn-bike','https://bikepoistenie.sk/'); });
-  document.getElementById('btn-sklad').addEventListener('click', function(e){ activateAndOpen('btn-sklad','https://poistenieskladu.sk/'); });
+  document.getElementById('btn-bike').addEventListener('click', function(e){ e.preventDefault(); activateAndOpen('btn-bike','https://bikepoistenie.sk/'); });
+  document.getElementById('btn-sklad').addEventListener('click', function(e){ e.preventDefault(); activateAndOpen('btn-sklad','https://poistenieskladu.sk/'); });
   document.getElementById('btn-hypo').addEventListener('click', function(e){ e.preventDefault(); activateAndOpen('btn-hypo'); /* zatiaľ bez presmerovania */ });
   document.getElementById('btn-dochodok').addEventListener('click', function(){ activateAndOpen('btn-dochodok'); /* otvorí sa v novom okne cez href */ });
 
