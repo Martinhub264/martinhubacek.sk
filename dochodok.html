@@ -31,7 +31,7 @@ body{margin:0;background:var(--navy);color:#fff;font:16px/1.6 Inter,system-ui,-a
 h1{font:800 42px/1.1 Inter;margin:.2rem 0 0}
 .lead{color:#ffffffcc;max-width:64ch}
 
-/* Grid (bez čísel a stôp) */
+/* Grid */
 .grid{display:grid;gap:22px;margin-top:28px}
 @media(min-width:980px){
   .grid{grid-template-columns:1fr 1fr}
@@ -53,8 +53,12 @@ h1{font:800 42px/1.1 Inter;margin:.2rem 0 0}
 .card p {color:#ffffffcc;margin:.4rem 0}
 .card .cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:.6rem;padding:.55rem .9rem;border-radius:10px;background:var(--brand);color:#00170a;font-weight:800;text-decoration:none}
 
-/* Overlay pre III. pilier + kalkulačka */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);display:none;z-index:60}
+/* Klikateľnosť III. piliera */
+.card.clickable{cursor:pointer}
+.card.clickable:focus-visible{outline:3px solid rgba(92,186,71,.55)}
+
+/* Overlay + kalkulačka */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);display:none;z-index:9999}
 .overlay.on{display:block}
 .panel{position:absolute;inset:6% 8%;background:#1e2654;border:1px solid var(--line);border-radius:18px;overflow:auto;padding:22px}
 .close{position:sticky;top:0;float:right;margin:-6px -6px 8px 0;border:1px solid #ffffff44;border-radius:999px;padding:.45rem .75rem;background:#fff1;color:#fff;font-weight:700;text-decoration:none}
@@ -111,11 +115,11 @@ a.link{color:#b9f1a8}
       <a class="cta" href="https://adss.sk/dochodkovy-system#odvody-na-starobne-poistenie" target="_blank" rel="noopener">Ako funguje</a>
     </article>
 
-    <!-- 3 -->
-    <article class="card left" id="open-dds" style="cursor:pointer" title="Otvoriť detail III. piliera">
+    <!-- 3 – klikací, otvorí overlay -->
+    <article class="card left clickable" id="open-dds" tabindex="0" role="button" title="Otvoriť detail III. piliera">
       <h3>III. pilier – doplnkové sporenie</h3>
       <p>Dobrovoľné sporenie často so <strong>príspevkom zamestnávateľa</strong>. Daňové zvýhodnenie + flexibilita. Vhodné ako stabilný doplnok k II. pilieru.</p>
-      <a class="cta" href="#" onclick="return false;">Zobraziť detail pre firmy a zamestnancov</a>
+      <a class="cta" id="open-dds-link" href="#" onclick="return false;">Zobraziť detail pre firmy a zamestnancov</a>
     </article>
 
     <!-- 4 -->
@@ -209,31 +213,54 @@ a.link{color:#b9f1a8}
 </div>
 
 <script>
-  // Overlay – otvorenie/zatvorenie
-  const overlay=document.getElementById('overlay-dds');
-  const openBtn=document.getElementById('open-dds');
-  const closeBtn=document.getElementById('close-dds');
-  openBtn.addEventListener('click',()=>{ overlay.classList.add('on'); gtag('event','open_dds_detail'); });
-  closeBtn.addEventListener('click',(e)=>{ e.preventDefault(); overlay.classList.remove('on'); });
-  addEventListener('keydown',e=>{ if(e.key==='Escape') overlay.classList.remove('on'); });
+  // Bezpečné získanie elementov
+  const overlay = document.getElementById('overlay-dds');
+  const openCard = document.getElementById('open-dds');
+  const openLink = document.getElementById('open-dds-link');
+  const closeBtn = document.getElementById('close-dds');
 
-  // Mini kalkulačka
+  function openOverlay(){
+    if(!overlay) return;
+    overlay.classList.add('on');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    try{ gtag('event','open_dds_detail'); }catch(e){}
+  }
+  function closeOverlay(e){
+    if(e) e.preventDefault();
+    if(!overlay) return;
+    overlay.classList.remove('on');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  // Počúvaj klik na kartu aj na tlačidlo vnútri
+  if(openCard){ openCard.addEventListener('click', (ev)=>{
+    // Ak sa kliklo na odkaz vnútri, tiež otvor
+    if(ev.target && ev.target.closest('#open-dds-link')) ev.preventDefault();
+    openOverlay();
+  }); }
+  if(openLink){ openLink.addEventListener('click', (ev)=>{ ev.preventDefault(); openOverlay(); }); }
+  if(closeBtn){ closeBtn.addEventListener('click', closeOverlay); }
+
+  // ESC zavrie overlay
+  addEventListener('keydown',e=>{ if(e.key==='Escape') closeOverlay(); });
+
+  // MINI KALKULAČKA
   const € = new Intl.NumberFormat('sk-SK',{style:'currency',currency:'EUR',maximumFractionDigits:0});
   const qS = id => document.getElementById(id);
 
   function fvMonthly(monthly, r, n){
-    // FV anuity due (pripisovanie na začiatku mesiaca pre mierne "cool" efekt)
     const i = r/12;
     if(i===0) return monthly*n;
     return monthly * ((Math.pow(1+i,n)-1)/i) * (1+i);
   }
-
   function recalc(){
-    const gross = Math.max(0, parseFloat(qS('gross').value)||0);
-    const empPct = Math.max(0, Math.min(100, parseFloat(qS('empPct').value)||0));
-    const eePct  = Math.max(0, Math.min(100, parseFloat(qS('eePct').value)||0));
-    const apy    = Math.max(0, parseFloat(qS('apy').value)||0)/100;
-    const years  = Math.max(0, parseInt(qS('years').value)||0);
+    const gross = Math.max(0, parseFloat(qS('gross')?.value)||0);
+    const empPct = Math.max(0, Math.min(100, parseFloat(qS('empPct')?.value)||0));
+    const eePct  = Math.max(0, Math.min(100, parseFloat(qS('eePct')?.value)||0));
+    const apy    = Math.max(0, parseFloat(qS('apy')?.value)||0)/100;
+    const years  = Math.max(0, parseInt(qS('years')?.value)||0);
 
     const empM = gross * empPct/100;
     const eeM  = gross * eePct/100;
@@ -242,17 +269,14 @@ a.link{color:#b9f1a8}
     const months = years*12;
     const FV = fvMonthly(totalM, apy, months);
 
-    qS('kpiEmp').textContent  = €.format(Math.round(empM));
-    qS('kpiEe').textContent   = €.format(Math.round(eeM));
-    qS('kpiYear').textContent = €.format(Math.round(totalM*12));
-    qS('kpiFV').textContent   = €.format(Math.round(FV));
+    if(qS('kpiEmp'))  qS('kpiEmp').textContent  = €.format(Math.round(empM));
+    if(qS('kpiEe'))   qS('kpiEe').textContent   = €.format(Math.round(eeM));
+    if(qS('kpiYear')) qS('kpiYear').textContent = €.format(Math.round(totalM*12));
+    if(qS('kpiFV'))   qS('kpiFV').textContent   = €.format(Math.round(FV));
   }
-
   ['gross','empPct','eePct','apy','years'].forEach(id=>{
-    qS(id).addEventListener('input', recalc);
+    const el=qS(id); if(el) el.addEventListener('input', recalc);
   });
-
-  // Hint sety
   document.querySelectorAll('.hint').forEach(h=>{
     h.addEventListener('click', ()=>{
       qS('gross').value = h.dataset.g;
@@ -263,11 +287,8 @@ a.link{color:#b9f1a8}
       recalc();
     });
   });
-
-  // prvý výpočet
   recalc();
 </script>
 
 </body>
 </html>
-
