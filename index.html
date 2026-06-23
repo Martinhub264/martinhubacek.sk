@@ -4,311 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ing. Martin Hubáček | Hypotéky, poistenie a ochrana majetku</title>
-  <meta name="description" content="Osobné finančné poradenstvo pre hypotéky, poistenie majetku, životné poistenie, podnikateľské riziká a zodpovednosť. Ing. Martin Hubáček – 13+ rokov praxe.">
+  <meta name="description" content="Hypotéky, poistenie, leasing, podnikateľské riziká a ochrana majetku. Ing. Martin Hubáček – 13+ rokov praxe.">
   <link rel="canonical" href="https://www.martinhubacek.sk/">
   <meta name="theme-color" content="#222e62">
-  <meta property="og:title" content="Ing. Martin Hubáček | Hypotéky, poistenie a ochrana majetku">
-  <meta property="og:description" content="Finančné riešenia nastavené podľa života, majetku a rizík – nie podľa produktovej tabuľky.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.martinhubacek.sk/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQJC3DTEVK"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-WQJC3DTEVK');</script>
-
   <style>
-    :root{
-      --navy:#222e62;
-      --navy-2:#10183d;
-      --navy-3:#2d3976;
-      --green:#5cba47;
-      --green-2:#8ee279;
-      --white:#ffffff;
-      --muted:#d9def7;
-      --soft:#f5f7fb;
-      --ink:#12152a;
-      --line:rgba(255,255,255,.14);
-      --line-dark:rgba(34,46,98,.12);
-      --shadow:0 24px 70px rgba(8,14,45,.28);
-      --radius:24px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--soft);color:var(--ink);line-height:1.65}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
-    .eyebrow{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .75rem;border-radius:999px;background:rgba(92,186,71,.14);color:var(--green-2);border:1px solid rgba(92,186,71,.34);font-weight:800;font-size:.82rem;letter-spacing:.02em}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.82rem 1.08rem;border-radius:999px;font-weight:850;border:1px solid transparent;transition:.2s ease;cursor:pointer;line-height:1}
-    .btn-primary{background:var(--green);color:#071507;box-shadow:0 16px 34px rgba(92,186,71,.28)}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 44px rgba(92,186,71,.35)}
-    .btn-light{background:#fff;color:var(--navy);border-color:rgba(255,255,255,.6)}
-    .btn-light:hover{transform:translateY(-2px)}
-    .btn-outline{border-color:rgba(255,255,255,.26);color:#fff;background:rgba(255,255,255,.07)}
-    .btn-outline:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.12)}
-    .btn-dark{background:var(--navy);color:#fff}
-    .muted{color:#5f6687}.muted-light{color:#d9def7}.small{font-size:.9rem}.section{padding:86px 0}.section.compact{padding:58px 0}
-    .section-title{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin:0 0 14px;letter-spacing:-.05em}.section-copy{font-size:1.08rem;max-width:760px;margin:0;color:#606887}
-
-    .topbar{position:sticky;top:0;z-index:90;background:rgba(16,24,61,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px;color:#fff}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.03em}.brand-mark{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--green),#b9f7a9);display:grid;place-items:center;color:#071507;box-shadow:0 10px 28px rgba(92,186,71,.25)}
-    .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.nav-links a{padding:.58rem .72rem;border-radius:999px;color:#eef2ff;font-weight:750;font-size:.92rem}.nav-links a:hover{background:rgba(255,255,255,.08)}
-    .nav-actions{display:flex;gap:10px;align-items:center}.mobile-note{display:none}
-
-    .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 78% 18%,rgba(92,186,71,.24),transparent 30%),linear-gradient(145deg,var(--navy),var(--navy-2));color:#fff;padding:72px 0 96px}
-    .hero::before{content:"";position:absolute;inset:auto -10% -22% -10%;height:280px;background:linear-gradient(90deg,rgba(92,186,71,.12),rgba(255,255,255,.08));filter:blur(55px);transform:rotate(-3deg)}
-    .hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}.hero h1{font-size:clamp(2.6rem,6vw,5.35rem);line-height:.95;margin:20px 0 18px;letter-spacing:-.075em}.hero-lead{font-size:clamp(1.08rem,2vw,1.28rem);max-width:660px;color:#e8ecff;margin:0 0 26px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px;max-width:660px}.trust{padding:16px;border:1px solid var(--line);background:rgba(255,255,255,.07);border-radius:18px}.trust strong{display:block;font-size:1.22rem}.trust span{color:#d9def7;font-size:.9rem}
-    .portrait-card{position:relative;background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:32px;padding:14px;box-shadow:var(--shadow)}.portrait{height:560px;width:100%;object-fit:cover;border-radius:24px;object-position:center}.portrait-fallback{display:none;height:560px;border-radius:24px;place-items:center;text-align:center;color:#d9def7;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.04))}.floating-card{position:absolute;left:-22px;bottom:24px;background:#fff;color:var(--ink);padding:18px;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.25);max-width:260px;border:1px solid rgba(255,255,255,.4)}.floating-card strong{color:var(--navy)}
-
-    .quick-strip{margin-top:-46px;position:relative;z-index:5}.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:#fff;border:1px solid var(--line-dark);border-radius:28px;padding:14px;box-shadow:var(--shadow)}.strip a,.strip button{display:flex;align-items:center;gap:12px;text-align:left;border:0;background:#f7f8fc;border-radius:20px;padding:18px;color:var(--ink);font:inherit;cursor:pointer}.strip strong{display:block;color:var(--navy);font-weight:900}.strip span{font-size:.88rem;color:#6a708d}.icon{width:40px;height:40px;min-width:40px;border-radius:14px;background:rgba(92,186,71,.14);display:grid;place-items:center;color:var(--green);font-weight:900}
-
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}.service-card{background:#fff;border:1px solid var(--line-dark);border-radius:var(--radius);padding:28px;box-shadow:0 14px 42px rgba(17,22,55,.07);transition:.2s ease}.service-card:hover{transform:translateY(-4px);box-shadow:0 22px 55px rgba(17,22,55,.12)}.service-card h3{margin:18px 0 8px;font-size:1.32rem;line-height:1.15;color:var(--navy);letter-spacing:-.025em}.service-card p{margin:0 0 18px;color:#666d89}.service-card ul{padding:0;margin:0;list-style:none;display:grid;gap:8px}.service-card li{display:flex;gap:8px;align-items:flex-start;color:#373d58}.service-card li::before{content:"✓";color:var(--green);font-weight:900}
-
-    .dark-panel{background:linear-gradient(145deg,var(--navy),#16204f);color:#fff;border-radius:34px;padding:54px;border:1px solid var(--line);box-shadow:var(--shadow)}.split{display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:start}.steps{display:grid;gap:14px}.step{display:grid;grid-template-columns:46px 1fr;gap:16px;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:20px;padding:18px}.step-num{width:46px;height:46px;border-radius:16px;background:var(--green);color:#081708;display:grid;place-items:center;font-weight:900}.step h3{margin:0 0 3px}.step p{margin:0;color:#d9def7}
-
-    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}.project{min-height:230px;border-radius:28px;padding:28px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;background:linear-gradient(145deg,var(--navy),#10183d)}.project:nth-child(2){background:linear-gradient(145deg,#183b29,#0e2118)}.project:nth-child(3){background:linear-gradient(145deg,#3b2f18,#21180e)}.project::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12)}.project h3{margin:0;font-size:1.45rem;letter-spacing:-.03em}.project p{color:#e7ebff;margin:10px 0 20px}.project a{font-weight:900;color:#fff;text-decoration:underline;text-underline-offset:4px}
-
-    .map-contact{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}.contact-card,.map-card{background:#fff;border:1px solid var(--line-dark);border-radius:28px;padding:28px;box-shadow:0 14px 42px rgba(17,22,55,.07)}.map-wrap{position:relative;border-radius:22px;overflow:hidden;background:#10183d;min-height:330px;display:grid;place-items:center}.map-wrap img{opacity:.9;filter:drop-shadow(0 0 10px rgba(92,186,71,.55))}.pin{position:absolute;display:flex;align-items:center;gap:7px;color:#fff;font-weight:900;text-shadow:0 4px 12px rgba(0,0,0,.35);font-size:.9rem}.pin::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 8px rgba(92,186,71,.22)}
-    .contact-grid{display:grid;gap:12px}.contact-item{display:flex;gap:12px;align-items:center;padding:14px;border-radius:18px;background:#f7f8fc}.contact-item strong{display:block;color:var(--navy)}.form{display:grid;gap:12px;margin-top:16px}.form input,.form textarea,.form select{width:100%;border:1px solid rgba(34,46,98,.18);border-radius:16px;padding:13px 14px;font:inherit;background:#fff;color:var(--ink)}.form label{font-weight:750;color:var(--navy)}.form .consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;color:#5f6687}.form .consent input{width:auto;margin-top:6px}
-
-    .footer{background:#10183d;color:#dfe5ff;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer a{text-decoration:underline;text-underline-offset:4px}.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:20px;padding-top:18px;color:#b9c2ee;font-size:.86rem;max-width:980px}
-
-    .sticky-cta{position:fixed;right:18px;bottom:18px;z-index:80}.progress{position:fixed;left:0;top:0;height:4px;background:linear-gradient(90deg,var(--green),#b9f7a9);width:0;z-index:120}
-    .overlay{position:fixed;inset:0;background:rgba(5,8,25,.72);backdrop-filter:blur(8px);z-index:130;display:none;padding:28px}.overlay.on{display:grid;place-items:center}.modal{width:min(980px,100%);max-height:88vh;overflow:auto;background:#fff;color:var(--ink);border-radius:30px;padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.35)}.modal-head{display:flex;justify-content:space-between;gap:18px;align-items:center}.close{border:0;background:#eef1f8;border-radius:999px;padding:.7rem 1rem;font-weight:900;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}.calc-grid a{border:1px solid var(--line-dark);border-radius:18px;padding:18px;background:#f7f8fc}.calc-grid strong{color:var(--navy)}
-
-    @media(max-width:980px){.hero-grid,.split,.map-contact{grid-template-columns:1fr}.portrait{height:460px}.floating-card{left:18px}.cards,.projects,.strip{grid-template-columns:1fr 1fr}.nav-links{display:none}.mobile-note{display:block;color:#d9def7;font-size:.86rem}.hero{padding-top:46px}.dark-panel{padding:34px}}
-    @media(max-width:640px){.container{width:min(100% - 28px,1180px)}.nav{height:auto;padding:12px 0;align-items:flex-start}.brand span{font-size:.95rem}.nav-actions{margin-left:auto}.nav-actions .btn-light{display:none}.hero{padding-bottom:76px}.hero-actions .btn{width:100%}.trust-row,.cards,.projects,.strip{grid-template-columns:1fr}.portrait{height:390px}.floating-card{position:static;margin-top:12px;max-width:none}.section{padding:62px 0}.section.compact{padding:44px 0}.dark-panel{border-radius:26px;padding:24px}.sticky-cta{left:14px;right:14px}.sticky-cta .btn{width:100%}.modal{padding:20px;border-radius:24px}}
+    :root{--navy:#222e62;--navy2:#10183d;--green:#5cba47;--soft:#f5f7fb;--ink:#12152a;--muted:#626a88;--line:rgba(34,46,98,.13);--lineLight:rgba(255,255,255,.14);--shadow:0 24px 70px rgba(8,14,45,.25)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--soft);color:var(--ink);line-height:1.65}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.container{width:min(1180px,calc(100% - 40px));margin-inline:auto}.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.82rem 1.08rem;border-radius:999px;font-weight:850;border:1px solid transparent;transition:.2s ease;cursor:pointer}.btn-primary{background:var(--green);color:#071507;box-shadow:0 16px 34px rgba(92,186,71,.28)}.btn-primary:hover{transform:translateY(-2px)}.btn-outline{border-color:rgba(255,255,255,.28);color:#fff;background:rgba(255,255,255,.07)}.btn-light{background:#fff;color:var(--navy)}.btn-dark{background:var(--navy);color:#fff}.muted{color:var(--muted)}.muted-light{color:#dfe5ff}.small{font-size:.9rem}
+    .topbar{position:sticky;top:0;z-index:40;background:rgba(16,24,61,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--lineLight)}.nav{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:14px;color:#fff}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.03em}.brand-mark{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,var(--green),#b9f7a9);display:grid;place-items:center;color:#071507}.nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.nav-links a{padding:.58rem .72rem;border-radius:999px;color:#eef2ff;font-weight:750;font-size:.92rem}.nav-actions{display:flex;gap:10px;align-items:center}
+    .hero{position:relative;overflow:hidden;background:radial-gradient(circle at 76% 20%,rgba(92,186,71,.24),transparent 30%),linear-gradient(145deg,var(--navy),var(--navy2));color:#fff;padding:78px 0 96px}.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}.eyebrow{display:inline-flex;padding:.45rem .75rem;border-radius:999px;background:rgba(92,186,71,.14);color:#9af084;border:1px solid rgba(92,186,71,.34);font-weight:850;font-size:.82rem}.hero h1{font-size:clamp(2.6rem,6vw,5.35rem);line-height:.95;margin:18px 0;letter-spacing:-.075em}.hero-lead{font-size:1.18rem;color:#e8ecff;max-width:690px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}.trust{padding:16px;border:1px solid var(--lineLight);background:rgba(255,255,255,.07);border-radius:18px}.trust strong{display:block;font-size:1.15rem}.trust span{color:#d9def7;font-size:.9rem}.portrait-card{position:relative;background:rgba(255,255,255,.08);border:1px solid var(--lineLight);border-radius:32px;padding:14px;box-shadow:var(--shadow)}.portrait{height:560px;width:100%;object-fit:cover;border-radius:24px;object-position:center}.floating-card{position:absolute;left:-22px;bottom:24px;background:#fff;color:var(--ink);padding:18px;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.25);max-width:260px}.floating-card strong{color:var(--navy)}
+    .quick-strip{margin-top:-46px;position:relative;z-index:5}.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:#fff;border:1px solid var(--line);border-radius:28px;padding:14px;box-shadow:var(--shadow)}.strip a,.strip button{display:flex;align-items:center;gap:12px;text-align:left;border:0;background:#f7f8fc;border-radius:20px;padding:18px;color:var(--ink);font:inherit;cursor:pointer}.strip strong{display:block;color:var(--navy);font-weight:900}.strip span{font-size:.88rem;color:#6a708d}.icon{width:40px;height:40px;min-width:40px;border-radius:14px;background:rgba(92,186,71,.14);display:grid;place-items:center;color:var(--green);font-weight:900}
+    .section{padding:82px 0}.section-title{font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin:0 0 14px;letter-spacing:-.05em}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 14px 42px rgba(17,22,55,.07)}.card h3{margin:18px 0 8px;color:var(--navy);font-size:1.32rem;line-height:1.15}.card p{margin:0 0 16px;color:#666d89}.card ul{padding:0;margin:0;list-style:none;display:grid;gap:8px}.card li{display:flex;gap:8px}.card li:before{content:'✓';color:var(--green);font-weight:900}.dark{background:linear-gradient(145deg,var(--navy),#16204f);color:#fff;border-radius:34px;padding:50px;box-shadow:var(--shadow)}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:38px}.steps{display:grid;gap:14px}.step{display:grid;grid-template-columns:46px 1fr;gap:16px;background:rgba(255,255,255,.07);border:1px solid var(--lineLight);border-radius:20px;padding:18px}.step-num{width:46px;height:46px;border-radius:16px;background:var(--green);color:#081708;display:grid;place-items:center;font-weight:900}.step h3{margin:0 0 3px}.step p{margin:0;color:#dfe5ff}.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}.project{min-height:230px;border-radius:28px;padding:28px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,var(--navy),#10183d);position:relative;overflow:hidden}.project:nth-child(2){background:linear-gradient(145deg,#183b29,#0e2118)}.project:nth-child(3){background:linear-gradient(145deg,#3b2f18,#21180e)}.project:after{content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12)}.project h3{margin:0;font-size:1.45rem}.project p{color:#e7ebff}.project a{font-weight:900;text-decoration:underline;text-underline-offset:4px}
+    .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}.contact-card,.map-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 14px 42px rgba(17,22,55,.07)}.contact-item{display:flex;gap:12px;align-items:center;padding:14px;border-radius:18px;background:#f7f8fc;margin-top:12px}.contact-item strong{display:block;color:var(--navy)}.form{display:grid;gap:12px;margin-top:16px}.form input,.form textarea,.form select{width:100%;border:1px solid var(--line);border-radius:16px;padding:13px 14px;font:inherit}.form label{font-weight:750;color:var(--navy)}.consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;color:#5f6687}.consent input{width:auto;margin-top:6px}.map-wrap{position:relative;border-radius:22px;overflow:hidden;background:#10183d;min-height:330px;display:grid;place-items:center}.map-wrap img{opacity:.9;filter:drop-shadow(0 0 10px rgba(92,186,71,.55))}.pin{position:absolute;display:flex;align-items:center;gap:7px;color:#fff;font-weight:900;text-shadow:0 4px 12px rgba(0,0,0,.35);font-size:.9rem}.pin:before{content:'';width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 8px rgba(92,186,71,.22)}
+    .footer{background:#10183d;color:#dfe5ff;padding:34px 0}.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer a{text-decoration:underline;text-underline-offset:4px}.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:20px;padding-top:18px;color:#b9c2ee;font-size:.86rem;max-width:980px}.sticky-cta{position:fixed;right:18px;bottom:18px;z-index:80}.overlay{position:fixed;inset:0;background:rgba(5,8,25,.72);backdrop-filter:blur(8px);z-index:130;display:none;padding:28px}.overlay.on{display:grid;place-items:center}.modal{width:min(980px,100%);max-height:88vh;overflow:auto;background:#fff;color:var(--ink);border-radius:30px;padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.35)}.modal-head{display:flex;justify-content:space-between;gap:18px;align-items:center}.close{border:0;background:#eef1f8;border-radius:999px;padding:.7rem 1rem;font-weight:900;cursor:pointer}.calc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}.calc-grid a{border:1px solid var(--line);border-radius:18px;padding:18px;background:#f7f8fc}.calc-grid strong{color:var(--navy)}
+    @media(max-width:980px){.hero-grid,.split,.contact-wrap{grid-template-columns:1fr}.cards,.projects,.strip{grid-template-columns:1fr 1fr}.portrait{height:460px}.nav-links{display:none}.dark{padding:32px}}@media(max-width:640px){.container{width:min(100% - 28px,1180px)}.nav{padding:12px 0;align-items:flex-start}.nav-actions .btn-light{display:none}.hero{padding:52px 0 76px}.hero-actions .btn{width:100%}.trust-row,.cards,.projects,.strip{grid-template-columns:1fr}.portrait{height:390px}.floating-card{position:static;margin-top:12px;max-width:none}.section{padding:58px 0}.dark{border-radius:26px;padding:24px}.sticky-cta{left:14px;right:14px}.sticky-cta .btn{width:100%}}
   </style>
 </head>
 <body>
-  <div id="progress" class="progress"></div>
-  <a class="sticky-cta btn btn-primary" href="#kontakt" onclick="gtag('event','cta_click',{label:'sticky_kontakt'})">Nezáväzná konzultácia</a>
-
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="Martin Hubáček – domov">
-        <span class="brand-mark">MH</span>
-        <span>Ing. Martin Hubáček</span>
-      </a>
-      <nav class="nav-links" aria-label="Hlavná navigácia">
-        <a href="#sluzby">Služby</a>
-        <a href="#postup">Postup</a>
-        <a href="#projekty">Projekty</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-      <div class="nav-actions">
-        <button class="btn btn-outline" id="open-calcs" type="button">Kalkulačky</button>
-        <a class="btn btn-light" href="tel:+421905874100">Zavolať</a>
-      </div>
-    </div>
-  </header>
-
+  <a class="sticky-cta btn btn-primary" href="#kontakt">Nezáväzná konzultácia</a>
+  <header class="topbar"><div class="container nav"><a class="brand" href="#home"><span class="brand-mark">MH</span><span>Ing. Martin Hubáček</span></a><nav class="nav-links"><a href="#sluzby">Služby</a><a href="#postup">Postup</a><a href="#projekty">Riešenia</a><a href="#kontakt">Kontakt</a></nav><div class="nav-actions"><button class="btn btn-outline" id="open-calcs" type="button">Kalkulačky</button><a class="btn btn-light" href="tel:+421905874100">Zavolať</a></div></div></header>
   <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">13+ rokov praxe vo financiách, hypotékach a poistení</span>
-          <h1>Financie, ktoré chránia život, majetok aj podnikanie.</h1>
-          <p class="hero-lead">Hypotéka, poistenie, zodpovednosť alebo podnikateľské riziko nemajú byť len produkt. Najprv sa pozrieme na situáciu, potom na možnosti a až následne na konkrétne riešenie.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#kontakt" onclick="gtag('event','cta_click',{label:'hero_kontakt'})">Chcem konzultáciu</a>
-            <button class="btn btn-outline" id="open-calcs-hero" type="button">Otvoriť kalkulačky</button>
-          </div>
-          <div class="trust-row" aria-label="Dôveryhodnosť">
-            <div class="trust"><strong>ViaVero</strong><span>riaditeľ a finančný konzultant</span></div>
-            <div class="trust"><strong>NBS 287587</strong><span>registrácia v sektore finančného sprostredkovania</span></div>
-            <div class="trust"><strong>BA · TN · MT</strong><span>osobne aj online po Slovensku</span></div>
-          </div>
-        </div>
-        <div class="portrait-card">
-          <img class="portrait" src="assets/martin-hubacek.jpg?v=2" alt="Ing. Martin Hubáček – finančný konzultant" onerror="this.style.display='none';document.getElementById('portraitFallback').style.display='grid'">
-          <div id="portraitFallback" class="portrait-fallback">Sem patrí profilová fotografia<br><strong>assets/martin-hubacek.jpg</strong></div>
-          <div class="floating-card">
-            <strong>Osobný prístup namiesto produktového predaja.</strong>
-            <div class="small muted">Priorita: zrozumiteľné rozhodnutie, férové porovnanie a ochrana pred zbytočnými stratami.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="quick-strip" aria-label="Rýchle odkazy">
-      <div class="container strip">
-        <a href="#sluzby"><span class="icon">H</span><span><strong>Hypotéky</strong><span>Kúpa, refix, refinancovanie</span></span></a>
-        <a href="https://bikepoistenie.sk/" target="_blank" rel="noopener"><span class="icon">B</span><span><strong>Bikepoistenie</strong><span>Bicykle, e-biky, e-kolobežky</span></span></a>
-        <a href="https://poistenieskladu.sk/" target="_blank" rel="noopener"><span class="icon">S</span><span><strong>Sklady a firmy</strong><span>Majetok, zásoby, výpadok</span></span></a>
-        <button id="open-calcs-strip" type="button"><span class="icon">≈</span><span><strong>Kalkulačky</strong><span>Rýchly orientačný prepočet</span></span></button>
-      </div>
-    </section>
-
-    <section id="sluzby" class="section">
-      <div class="container">
-        <h2 class="section-title">Tri oblasti, kde rozhodujú detaily.</h2>
-        <p class="section-copy">Stránka je postavená tak, aby návštevník rýchlo pochopil, s čím mu viem pomôcť: bývanie, ochrana príjmu a majetku, plus podnikateľské riziká.</p>
-        <div class="cards">
-          <article class="service-card">
-            <div class="icon">01</div>
-            <h3>Hypotéky a financovanie bývania</h3>
-            <p>Od prvého prepočtu až po porovnanie bánk a reálne možnosti schválenia.</p>
-            <ul>
-              <li>kúpa nehnuteľnosti, refinancovanie, konsolidácia</li>
-              <li>živnostníci, podnikatelia, kombinované príjmy</li>
-              <li>modelovanie splátky, LTV, fixácie a rezervy</li>
-            </ul>
-          </article>
-          <article class="service-card">
-            <div class="icon">02</div>
-            <h3>Poistenie života, zdravia a majetku</h3>
-            <p>Nastavenie krytí podľa rizík, výluk a finančných dôsledkov pre rodinu.</p>
-            <ul>
-              <li>životné poistenie, PN, invalidita, kritické ochorenia</li>
-              <li>dom, byt, domácnosť, zodpovednosť</li>
-              <li>porovnanie podmienok, nielen ceny poistky</li>
-            </ul>
-          </article>
-          <article class="service-card">
-            <div class="icon">03</div>
-            <h3>Podnikatelia, sklady a zodpovednosť</h3>
-            <p>Ochrana prevádzky, zásob, zodpovednosti konateľov a firemných rizík.</p>
-            <ul>
-              <li>sklady, haly, zásoby, prerušenie prevádzky</li>
-              <li>D&O, všeobecná zodpovednosť, kybernetické riziká</li>
-              <li>audit poistných zmlúv a rizikových miest</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="postup" class="section compact">
-      <div class="container dark-panel split">
-        <div>
-          <span class="eyebrow">Ako prebieha spolupráca</span>
-          <h2 class="section-title" style="color:#fff;margin-top:18px">Najprv diagnóza. Až potom produkt.</h2>
-          <p class="muted-light">Moderný web má návštevníka viesť k jednoduchému kroku: ozvať sa, poslať základnú situáciu a dostať vecnú spätnú väzbu. Preto je postup jasný a predvídateľný.</p>
-        </div>
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div><h3>Krátky vstupný rozhovor</h3><p>Zistíme cieľ, príjem, záväzky, majetok, rodinnú alebo firemnú situáciu.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div><h3>Porovnanie možností</h3><p>Neukazujem len najlacnejšiu variantu, ale aj podmienky, limity, výluky a riziká.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div><h3>Odporúčanie riešenia</h3><p>Dostanete zrozumiteľný návrh, čo dáva zmysel teraz a čo riešiť neskôr.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div><h3>Realizácia a servis</h3><p>Pomôžem s procesom, dokumentmi a priebežnou aktualizáciou nastavenia.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projekty" class="section">
-      <div class="container">
-        <h2 class="section-title">Samostatné produktové projekty.</h2>
-        <p class="section-copy">Osobný web má fungovať ako rozcestník: keď návštevník rieši konkrétny problém, pošle ho na špecializovanú stránku alebo dotazník.</p>
-        <div class="projects">
-          <article class="project">
-            <div><h3>Bikepoistenie.sk</h3><p>Poistenie bicyklov, e-bikov a e-kolobežiek – pre ľudí, ktorí nechcú riešiť finančnú stratu po krádeži alebo škode.</p></div>
-            <a href="https://bikepoistenie.sk/" target="_blank" rel="noopener">Otvoriť projekt</a>
-          </article>
-          <article class="project">
-            <div><h3>Poistenie skladu</h3><p>Majetok, zásoby, zodpovednosť a prevádzkové riziká pre menšie firmy, sklady a logistiku.</p></div>
-            <a href="https://poistenieskladu.sk/" target="_blank" rel="noopener">Otvoriť projekt</a>
-          </article>
-          <article class="project">
-            <div><h3>Dôchodok a budúcnosť</h3><p>Rozcestník pre dlhodobé plánovanie, tretí pilier, investície a finančnú rezervu.</p></div>
-            <a href="dochodok.html" target="_blank" rel="noopener">Otvoriť stránku</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontakt" class="section compact">
-      <div class="container map-contact">
-        <div class="contact-card">
-          <h2 class="section-title">Napíšte mi, čo riešite.</h2>
-          <p class="section-copy">Stačí stručne: hypotéka, poistka, zmluva, podnikateľské riziko alebo len otázka, či je vaše nastavenie rozumné.</p>
-          <div class="contact-grid" style="margin-top:22px">
-            <a class="contact-item" href="tel:+421905874100"><span class="icon">☎</span><span><strong>+421 905 874 100</strong><span class="small muted">telefonicky alebo WhatsApp</span></span></a>
-            <a class="contact-item" href="mailto:hubacekm26@gmail.com"><span class="icon">@</span><span><strong>hubacekm26@gmail.com</strong><span class="small muted">e-mail pre dokumenty a podklady</span></span></a>
-          </div>
-          <form class="form" id="leadForm">
-            <label>Meno a priezvisko<input name="meno" type="text" required autocomplete="name"></label>
-            <label>Kontakt<input name="kontakt" type="text" required placeholder="telefón alebo e-mail"></label>
-            <label>Téma<select name="tema"><option>Hypotéka</option><option>Poistenie majetku alebo života</option><option>Podnikateľské riziká / sklad</option><option>Iné</option></select></label>
-            <label>Správa<textarea name="sprava" rows="4" placeholder="Stručne popíšte situáciu"></textarea></label>
-            <label class="consent"><input type="checkbox" required> <span>Súhlasím so spracovaním údajov na účely spätného kontaktovania.</span></label>
-            <button class="btn btn-dark" type="submit">Odoslať cez e-mail</button>
-          </form>
-        </div>
-        <div class="map-card">
-          <h3 style="margin:0 0 12px;color:var(--navy);font-size:1.45rem">Pôsobnosť</h3>
-          <p class="muted" style="margin-top:0">Osobné stretnutia najmä Bratislava, Trenčín a Martin. Mnohé veci vieme vyriešiť aj online.</p>
-          <div class="map-wrap">
-            <img src="mapa-sr.png" alt="Mapa Slovenska" onerror="this.replaceWith(Object.assign(document.createElement('div'),{style:'color:#d9def7;text-align:center;padding:30px',innerText:'Sem patrí mapa-sr.png'}))">
-            <span class="pin" style="left:8%;top:70%">Bratislava</span>
-            <span class="pin" style="left:25%;top:34%">Trenčín</span>
-            <span class="pin" style="left:38%;top:28%">Martin</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="hero"><div class="container hero-grid"><div><span class="eyebrow">13+ rokov praxe vo financiách, hypotékach a poistení</span><h1>Riešenia, ktoré chránia život, majetok aj podnikanie.</h1><p class="hero-lead">Hypotéka, poistenie, zodpovednosť alebo podnikateľské riziko nemajú byť len produkt. Najprv sa pozrieme na situáciu, potom na možnosti a až následne na konkrétne riešenie.</p><div class="hero-actions"><a class="btn btn-primary" href="#kontakt">Chcem konzultáciu</a><button class="btn btn-outline" id="open-calcs-hero" type="button">Otvoriť kalkulačky</button></div><div class="trust-row"><div class="trust"><strong>ViaVero, družstvo</strong><span>predseda predstavenstva</span></div><div class="trust"><strong>NBS 287587</strong><span>registračné číslo NBS 287587</span></div><div class="trust"><strong>BA · TN · MT</strong><span>osobne aj online po Slovensku</span></div></div></div><div class="portrait-card"><img class="portrait" src="assets/martin-hubacek.jpg?v=4" alt="Ing. Martin Hubáček – finančný konzultant"><div class="floating-card"><strong>Osobný prístup namiesto produktového predaja.</strong><div class="small muted">Priorita: zrozumiteľné rozhodnutie, férové porovnanie a ochrana pred zbytočnými stratami.</div></div></div></div></section>
+    <section class="quick-strip"><div class="container strip"><a href="#sluzby"><span class="icon">H</span><span><strong>Hypotéky</strong><span>Kúpa, refix, refinancovanie</span></span></a><a href="https://bikepoistenie.sk/" target="_blank" rel="noopener"><span class="icon">B</span><span><strong>Bikepoistenie</strong><span>Bicykle, e-biky, e-kolobežky</span></span></a><a href="https://poistenieskladu.sk/" target="_blank" rel="noopener"><span class="icon">S</span><span><strong>Sklady a firmy</strong><span>Majetok, zásoby, výpadok</span></span></a><button id="open-calcs-strip" type="button"><span class="icon">≈</span><span><strong>Kalkulačky</strong><span>Rýchly orientačný prepočet</span></span></button></div></section>
+    <section id="sluzby" class="section"><div class="container"><h2 class="section-title">Tri oblasti, kde rozhodujú detaily.</h2><div class="cards"><article class="card"><div class="icon">01</div><h3>Hypotéky a financovanie bývania</h3><p>Od prvého prepočtu až po porovnanie bánk a reálne možnosti schválenia.</p><ul><li>kúpa nehnuteľnosti, refinancovanie, konsolidácia</li><li>živnostníci, podnikatelia, kombinované príjmy</li><li>modelovanie splátky, LTV, fixácie a rezervy</li></ul></article><article class="card"><div class="icon">02</div><h3>Poistenie života, zdravia a majetku</h3><p>Nastavenie krytí podľa rizík, výluk a finančných dôsledkov pre rodinu.</p><ul><li>životné poistenie, PN, invalidita, kritické ochorenia</li><li>dom, byt, domácnosť, zodpovednosť</li><li>porovnanie podmienok, nielen ceny poistky</li></ul></article><article class="card"><div class="icon">03</div><h3>Podnikatelia, sklady a zodpovednosť</h3><p>Ochrana prevádzky, zásob, zodpovednosti konateľov a firemných rizík.</p><ul><li>sklady, haly, zásoby, prerušenie prevádzky</li><li>D&O, všeobecná zodpovednosť, kybernetické riziká</li><li>audit poistných zmlúv a rizikových miest</li></ul></article></div></div></section>
+    <section id="postup" class="section"><div class="container dark split"><div><span class="eyebrow">Ako prebieha spolupráca</span><h2 class="section-title" style="color:#fff;margin-top:18px">Najprv analýza potom riešenia.</h2></div><div class="steps"><div class="step"><div class="step-num">1</div><div><h3>Krátky vstupný rozhovor</h3><p>Zistíme cieľ, príjem, záväzky, majetok, rodinnú alebo firemnú situáciu.</p></div></div><div class="step"><div class="step-num">2</div><div><h3>Porovnanie možností</h3><p>Neukazujeme len najlacnejšiu variantu, ale aj podmienky, limity, výluky a riziká.</p></div></div><div class="step"><div class="step-num">3</div><div><h3>Odporúčanie riešenia</h3><p>Dostanete zrozumiteľný návrh, čo dáva zmysel teraz a čo riešiť neskôr.</p></div></div><div class="step"><div class="step-num">4</div><div><h3>Realizácia a servis</h3><p>Pomôžeme s procesom, dokumentmi a priebežnou aktualizáciou nastavenia.</p></div></div></div></div></section>
+    <section id="projekty" class="section"><div class="container"><h2 class="section-title">S nami vyriešite aj ...</h2><div class="projects"><article class="project"><div><h3>Bikepoistenie.sk</h3><p>Poistenie bicyklov, e-bikov a e-kolobežiek – pre ľudí, ktorí nechcú riešiť finančnú stratu po krádeži alebo škode.</p></div><a href="https://bikepoistenie.sk/" target="_blank" rel="noopener">Otvoriť projekt</a></article><article class="project"><div><h3>Poistenie skladu</h3><p>Majetok, zásoby, zodpovednosť a prevádzkové riziká pre menšie firmy, sklady a logistiku.</p></div><a href="https://poistenieskladu.sk/" target="_blank" rel="noopener">Otvoriť projekt</a></article><article class="project"><div><h3>Dôchodok a budúcnosť</h3><p>Rozcestník pre dlhodobé plánovanie, tretí pilier, investície a finančnú rezervu.</p></div><a href="dochodok.html" target="_blank" rel="noopener">Otvoriť stránku</a></article></div></div></section>
+    <section id="kontakt" class="section"><div class="container contact-wrap"><div class="contact-card"><h2 class="section-title">Napíšte mi, čo riešite.</h2><p class="muted">Stručný popis vašej situácie a požiadavky. Hypotéka, biznis riešenia, leasing či ochrana zdravia.</p><a class="contact-item" href="tel:+421905874100"><span class="icon">☎</span><span><strong>+421 905 874 100</strong><span class="small muted">telefonicky alebo WhatsApp</span></span></a><a class="contact-item" href="mailto:partner@martinhubacek.sk"><span class="icon">@</span><span><strong>partner@martinhubacek.sk</strong><span class="small muted">e-mail pre dokumenty a podklady</span></span></a><form class="form" id="leadForm"><label>Meno a priezvisko<input name="meno" type="text" required></label><label>Kontakt<input name="kontakt" type="text" required placeholder="telefón alebo e-mail"></label><label>Téma<select name="tema"><option>Hypotéka</option><option>Biznis riešenia</option><option>Leasing</option><option>Ochrana zdravia</option><option>Iné</option></select></label><label>Správa<textarea name="sprava" rows="4" placeholder="Stručne popíšte situáciu"></textarea></label><label class="consent"><input type="checkbox" required><span>Súhlasím so spracovaním údajov na účely spätného kontaktovania.</span></label><button class="btn btn-dark" type="submit">Odoslať cez e-mail</button></form></div><div class="map-card"><h3 style="margin:0 0 12px;color:var(--navy);font-size:1.45rem">Pôsobnosť</h3><p class="muted">Osobné stretnutia najmä Bratislava, Trenčín a Martin. Mnohé veci vieme vyriešiť aj online.</p><div class="map-wrap"><img src="mapa-sr.png" alt="Mapa Slovenska"><span class="pin" style="left:8%;top:70%">Bratislava</span><span class="pin" style="left:25%;top:34%">Trenčín</span><span class="pin" style="left:38%;top:28%">Martin</span></div></div></div></section>
   </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <strong>© <span id="rok"></span> Ing. Martin Hubáček</strong>
-        <span><a href="https://finportal.sk/files/ochrana-osobnych-udajov-finportal-2024.pdf" target="_blank" rel="noopener">Zásady ochrany súkromia Finportal</a></span>
-      </div>
-      <p class="legal">Spoločnosť M&amp;F Consulting s.r.o. vykonáva finančné sprostredkovanie v pozícii podriadeného finančného agenta podľa § 9 so samostatným finančným agentom Finportal, a.s. Informácie na stránke majú všeobecný a orientačný charakter; konkrétne odporúčanie závisí od individuálneho posúdenia potrieb, cieľov a finančnej situácie klienta.</p>
-    </div>
-  </footer>
-
-  <div id="overlay" class="overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="calcTitle">
-      <div class="modal-head">
-        <div><h2 id="calcTitle" style="margin:0;color:var(--navy);font-size:2rem;letter-spacing:-.04em">Kalkulačky a rýchle prepočty</h2><p class="muted" style="margin:.25rem 0 0">Externé nástroje sa otvoria v novom okne. Výsledok je orientačný.</p></div>
-        <button class="close" id="close-calcs" type="button">Zavrieť ✕</button>
-      </div>
-      <div class="calc-grid">
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/havarijne-poistenie/?kod=168640003"><strong>KASKO</strong><br><span class="muted">Havarijné poistenie auta</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/pzp-povinne-zmluvne-poistenie/?kod=168640003"><strong>PZP</strong><br><span class="muted">Povinné zmluvné poistenie</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-domu-bytu-domacnosti/?kod=168640003"><strong>Majetok</strong><br><span class="muted">Dom, byt, domácnosť</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-zodpovednosti-zamestnanca-za-skodu/?kod=168640003"><strong>Zodpovednosť zamestnanca</strong><br><span class="muted">Škoda voči zamestnávateľovi</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/cestovne-poistenie/?kod=168640003"><strong>Cestovné poistenie</strong><br><span class="muted">Cesty a dovolenky</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/gap-poistenie-financnej-straty/?kod=168640003"><strong>GAP</strong><br><span class="muted">Finančná strata pri vozidle</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-podnikatelov/?kod=168640003"><strong>Podnikatelia</strong><br><span class="muted">Firma, majetok, zodpovednosť</span></a>
-        <a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/cudzinci/?kod=168640003"><strong>Cudzinci</strong><br><span class="muted">Poistenie pre cudzincov</span></a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('rok').textContent = new Date().getFullYear();
-
-    const progress = document.getElementById('progress');
-    const updateProgress = () => {
-      const h = document.documentElement;
-      const total = h.scrollHeight - h.clientHeight;
-      const pct = total ? (h.scrollTop / total) * 100 : 0;
-      progress.style.width = pct + '%';
-    };
-    addEventListener('scroll', updateProgress, {passive:true}); updateProgress();
-
-    const overlay = document.getElementById('overlay');
-    const openCalcs = () => { overlay.classList.add('on'); overlay.setAttribute('aria-hidden','false'); gtag('event','open_calculators'); };
-    const closeCalcs = () => { overlay.classList.remove('on'); overlay.setAttribute('aria-hidden','true'); };
-    ['open-calcs','open-calcs-hero','open-calcs-strip'].forEach(id => document.getElementById(id)?.addEventListener('click', openCalcs));
-    document.getElementById('close-calcs').addEventListener('click', closeCalcs);
-    overlay.addEventListener('click', e => { if(e.target === overlay) closeCalcs(); });
-    addEventListener('keydown', e => { if(e.key === 'Escape') closeCalcs(); });
-
-    document.getElementById('leadForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const data = new FormData(this);
-      const subject = encodeURIComponent('Dopyt z martinhubacek.sk – ' + data.get('tema'));
-      const body = encodeURIComponent(`Meno: ${data.get('meno')}\nKontakt: ${data.get('kontakt')}\nTéma: ${data.get('tema')}\n\nSpráva:\n${data.get('sprava') || ''}`);
-      gtag('event','lead_form_submit',{label:data.get('tema')});
-      location.href = `mailto:hubacekm26@gmail.com?subject=${subject}&body=${body}`;
-    });
-  </script>
+  <footer class="footer"><div class="container"><div class="footer-inner"><strong>© <span id="rok"></span> Ing. Martin Hubáček</strong><span><a href="https://finportal.sk/files/ochrana-osobnych-udajov-finportal-2024.pdf" target="_blank" rel="noopener">Zásady ochrany súkromia Finportal</a></span></div><p class="legal">Spoločnosť M&amp;F Consulting s.r.o. vykonáva finančné sprostredkovanie v pozícii podriadeného finančného agenta podľa § 9 so samostatným finančným agentom Finportal, a.s. Informácie na stránke majú všeobecný a orientačný charakter; konkrétne odporúčanie závisí od individuálneho posúdenia potrieb, cieľov a finančnej situácie klienta.</p></div></footer>
+  <div id="overlay" class="overlay" aria-hidden="true"><div class="modal"><div class="modal-head"><div><h2 style="margin:0;color:var(--navy)">Kalkulačky a rýchle prepočty</h2><p class="muted">Externé nástroje sa otvoria v novom okne. Výsledok je orientačný.</p></div><button class="close" id="close-calcs" type="button">Zavrieť ✕</button></div><div class="calc-grid"><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/havarijne-poistenie/?kod=168640003"><strong>KASKO</strong><br><span class="muted">Havarijné poistenie auta</span></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/pzp-povinne-zmluvne-poistenie/?kod=168640003"><strong>PZP</strong><br><span class="muted">Povinné zmluvné poistenie</span></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-domu-bytu-domacnosti/?kod=168640003"><strong>Majetok</strong><br><span class="muted">Dom, byt, domácnosť</span></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-zodpovednosti-zamestnanca-za-skodu/?kod=168640003"><strong>Zodpovednosť zamestnanca</strong><br><span class="muted">Škoda voči zamestnávateľovi</span></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/cestovne-poistenie/?kod=168640003"><strong>Cestovné poistenie</strong></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/gap-poistenie-financnej-straty/?kod=168640003"><strong>GAP</strong></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/poistenie-podnikatelov/?kod=168640003"><strong>Podnikatelia</strong></a><a target="_blank" rel="nofollow noopener" href="https://www.najpoistenie.sk/cudzinci/?kod=168640003"><strong>Cudzinci</strong></a></div></div></div>
+  <script>document.getElementById('rok').textContent=new Date().getFullYear();const overlay=document.getElementById('overlay');function openCalcs(){overlay.classList.add('on');overlay.setAttribute('aria-hidden','false');try{gtag('event','open_calculators')}catch(e){}}function closeCalcs(){overlay.classList.remove('on');overlay.setAttribute('aria-hidden','true')}['open-calcs','open-calcs-hero','open-calcs-strip'].forEach(id=>document.getElementById(id)?.addEventListener('click',openCalcs));document.getElementById('close-calcs').addEventListener('click',closeCalcs);overlay.addEventListener('click',e=>{if(e.target===overlay)closeCalcs()});document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();const d=new FormData(this);const s=encodeURIComponent('Dopyt z martinhubacek.sk – '+d.get('tema'));const b=encodeURIComponent('Meno: '+d.get('meno')+'\nKontakt: '+d.get('kontakt')+'\nTéma: '+d.get('tema')+'\n\nSpráva:\n'+(d.get('sprava')||''));location.href='mailto:partner@martinhubacek.sk?subject='+s+'&body='+b;});</script>
 </body>
 </html>
